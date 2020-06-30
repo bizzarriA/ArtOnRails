@@ -1,0 +1,28 @@
+#postgres
+
+development:
+  adapter: postgresql
+  encoding: unicode
+  database: artonrails
+  pool: 5
+  username: postgres
+  password: password
+  timeout: 5000
+
+test:
+  adapter: postgresql
+  encoding: unicode
+  database: artonrails_test
+  pool: 5
+  username: postgres
+  password: password
+  timeout: 5000
+
+production:
+  adapter: postgresql
+  encoding: unicode
+  database: artonrails_production
+  pool: 5
+  username: postgres
+  password: password
+  timeout: 5000
