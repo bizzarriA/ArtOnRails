@@ -14,8 +14,16 @@
   <%= stylesheet_link_tag 'gallery/main'%>
   <%= javascript_include_tag 'gallery/jquery.min.js' %>
 </head>
-<!-- Header -->
 <body>
+<!-- Header -->
+<header id="header">
+  <h1><%= link_to 'ArtOnRails', root_path %></h1>
+  <nav>
+    <ul>
+      <li><a href="#footer" class="icon solid fa-info-circle">About</a></li>
+    </ul>
+  </nav>
+</header>
 <!-- Wrapper -->
 <div id="wrapper">
 

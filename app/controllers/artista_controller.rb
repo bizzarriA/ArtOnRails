@@ -1,15 +1,11 @@
 class ArtistaController < ApplicationController
   before_action :set_artistum, only: [:show, :edit, :update, :destroy]
   layout "gallery"
-  # GET /artista
-  # GET /artista.json
-  def index
-    @artista = Artistum.all
-  end
 
   # GET /artista/1
   # GET /artista/1.json
   def show
+    @operas = Opera.where('artista_id=?', @artistum.id)
   end
 
   # GET /artista/new
@@ -63,13 +59,13 @@ class ArtistaController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_artistum
-      @artistum = Artistum.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_artistum
+    @artistum = Artistum.find(current_user.artista_id)
+  end
 
-    # Only allow a list of trusted parameters through.
-    def artistum_params
-      params.fetch(:artistum, {})
-    end
+  # Only allow a list of trusted parameters through.
+  def artistum_params
+    params.fetch(:artistum, {})
+  end
 end

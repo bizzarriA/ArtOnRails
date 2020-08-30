@@ -1,28 +1,18 @@
-<div id="main">
-  <article class="thumb">
-    <%=link_to image_tag(asset_path 'thumbs/01.jpg'), (asset_path 'fulls/01.jpg'),class: 'image' %>
-    <h2>Magna feugiat lorem</h2>
-    <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-  </article>
-  <article class="thumb">
-    <%=link_to  image_tag(asset_path 'thumbs/02.jpg'), (asset_path 'fulls/02.jpg'),class: 'image' %>
-    <h2>Nisl adipiscing</h2>
-    <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-  </article>
-  <article class="thumb">
-    <%=link_to  image_tag(asset_path 'thumbs/03.jpg'), (asset_path 'fulls/03.jpg'),class: 'image' %>
-    <h2>Tempus aliquam veroeros</h2>
-    <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-  </article>
-  <article class="thumb">
-    <%=link_to  image_tag(asset_path 'thumbs/04.jpg'), (asset_path 'fulls/04.jpg'),class: 'image' %>
-    <h2>Aliquam ipsum sed dolore</h2>
-    <p>Nunc blandit nisi ligula magna sodales lectus elementum non. Integer id venenatis velit.</p>
-  </article>
-</div>
 
-
-<%= link_to 'Edit', edit_artistum_path(@artistum) %> |
-<%= link_to 'Back', artista_path %> |
-<%= link_to 'Home', root_path %>
-</div>
+<%if @operas.empty? %>
+  <div id="banner">
+    <h2>Al momento non hai nessuna opera inserita!</h2>
+    <div><%=link_to 'aggiungi nuova opera', new_opera_path%></div>
+  </div>
+<%else %>
+  <div id="main">
+    <%@operas.each do |opera| %>
+      <article class="thumb">
+        <%=link_to image_tag(asset_path @opera.url), (asset_path @opera.url),class: 'image' %>
+        <h2><%= opera.titolo %>></h2>
+        <p> <%= opera.tecnica %>,<%= opera.anno %></p>
+      </article>
+    <%end %>
+    <div><%=link_to 'aggiungi nuova opera', new_opera_path%></div>
+  </div>
+<%end %>
