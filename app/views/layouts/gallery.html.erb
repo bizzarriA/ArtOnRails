@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>ArtOnRails</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+  <meta charset="utf-8" />
+  <meta name="turbolinks-visit-control" content="reload">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <%= stylesheet_link_tag 'gallery/main'%>
+  <%= javascript_include_tag 'gallery/jquery.min.js' %>
+</head>
+<!-- Header -->
+<body>
+<!-- Wrapper -->
+<div id="wrapper">
+
+  <%= yield %>
+
+
+</div>
+
+<!-- Scripts -->
+<%= javascript_include_tag 'gallery/browser.min.js' %>
+<%= javascript_include_tag 'gallery/jquery.poptrox.min.js' %>
+<%= javascript_include_tag 'gallery/breakpoints.min.js' %>
+<%= javascript_include_tag 'gallery/util.js' %>
+<%= javascript_include_tag 'gallery/main.js' %>
+
+
+
+</body>
+
+</html>

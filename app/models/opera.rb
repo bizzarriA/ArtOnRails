@@ -1,0 +1,2 @@
+class Opera < ApplicationRecord
+end

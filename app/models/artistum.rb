@@ -1,0 +1,2 @@
+class Artistum < ApplicationRecord
+end

@@ -1,0 +1,17 @@
+<%= form_with(model: opera, local: true) do |form| %>
+  <% if opera.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(opera.errors.count, "error") %> prohibited this opera from being saved:</h2>
+
+      <ul>
+        <% opera.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
