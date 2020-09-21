@@ -11,50 +11,51 @@
   <meta charset="utf-8" />
   <meta name="turbolinks-visit-control" content="reload">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-    <%= stylesheet_link_tag 'main/main'%>
-  <%= javascript_include_tag 'main/jquery.min.js' %>
+  <%= stylesheet_link_tag 'main/main'%>
 </head>
 <!-- Header -->
-  <body>
-  <!-- Wrapper -->
-  <div id="wrapper">
-    <header id="header">
-      <div class="content">
-        <div class="inner">
-          <p><%= yield %></p>
-        </div>
+<body class="is-preload">
+
+<%= javascript_include_tag 'jquery.min' %>
+<!-- Wrapper -->
+<div id="wrapper">
+  <header id="header">
+    <div class="content">
+      <div class="inner">
+        <p><%= yield %></p>
       </div>
-      <nav>
-        <ul>
-          <li><%= link_to "Home", root_path %></li>
-          <li><%= link_to "Cerca", root_path %></li>
-          <% if current_user == nil %>
-            <li><%= link_to "Registrati", new_user_registration_path %></li>
-          <% elsif current_user.artista_id == nil %>
-            <li><%= link_to "Esponi", new_artistum_path %></li>
-          <%else %>
-            <li><%= link_to "Portfolio", artistum_path(current_user.artista_id) %></li>
-          <%end %>
-          <%if user_signed_in? %>
-            <li><%= link_to "Log Out", user_sign_out_path %></li>
-          <%else  %>
-            <li><%= link_to "Log in", new_user_session_path %></li>
-          <%end %>
-        </ul>
-      </nav>
-    </header>
-  </div>
-  <!-- BG -->
-  <div id="bg"></div>
+    </div>
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+        <li><%= link_to "Cerca", root_path %></li>
+        <% if current_user == nil %>
+          <li><%= link_to "Registrati", new_user_registration_path %></li>
+        <% elsif current_user.artista_id == nil %>
+          <li><%= link_to "Esponi", new_artistum_path %></li>
+        <%else %>
+          <li><%= link_to "Portfolio", artistum_path(current_user.artista_id) %></li>
+        <%end %>
+        <%if user_signed_in? %>
+          <li><%= link_to "Profilo", user_path(current_user.id) %></li>
+        <%else  %>
+          <li><%= link_to "Log in", new_user_session_path %></li>
+        <%end %>
+      </ul>
+    </nav>
+  </header>
+</div>
+<!-- BG -->
+<div id="bg"></div>
 
-  <!-- Scripts -->
-  <%= javascript_include_tag 'main/browser.min.js' %>
-  <%= javascript_include_tag 'main/breakpoints.min.js' %>
-  <%= javascript_include_tag 'main/util.js' %>
-  <%= javascript_include_tag 'main/main.js' %>
+<!-- Scripts -->
+<%= javascript_include_tag 'browser.min' %>
+<%= javascript_include_tag 'breakpoints.min' %>
+<%= javascript_include_tag 'main/util.js' %>
+<%= javascript_include_tag 'main/main.js' %>
 
 
 
-  </body>
+</body>
 
 </html>

@@ -1,18 +1,23 @@
 
 <%if @operas.empty? %>
   <div id="banner">
-    <h2>Al momento non hai nessuna opera inserita!</h2>
+    <h2>Al momento non ci sono opere in questo portfolio!</h2>
     <div><%=link_to 'aggiungi nuova opera', new_opera_path%></div>
   </div>
 <%else %>
   <div id="main">
     <%@operas.each do |opera| %>
       <article class="thumb">
-        <%=link_to image_tag(asset_path @opera.url), (asset_path @opera.url),class: 'image' %>
-        <h2><%= opera.titolo %>></h2>
+        <%=link_to image_tag(opera.url.url), (opera.url.url),class: 'image' %>
+        <h2><%= opera.titolo %></h2>
         <p> <%= opera.tecnica %>,<%= opera.anno %></p>
+        <%if current_user.artista_id == opera.artista_id %>
+          <%= link_to 'Modifica', edit_opera_path(opera.id), class: "button"%>
+        <%end %>
       </article>
     <%end %>
-    <div><%=link_to 'aggiungi nuova opera', new_opera_path%></div>
+    <article>
+      <%=link_to 'aggiungi nuova opera', new_opera_path, class: "button"%>
+    </article>
   </div>
 <%end %>

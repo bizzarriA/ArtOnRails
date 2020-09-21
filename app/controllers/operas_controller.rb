@@ -1,6 +1,8 @@
 class OperasController < ApplicationController
   before_action :set_opera, only: [:show, :edit, :update, :destroy]
 
+  # layout "gallery"
+
   # GET /operas
   # GET /operas.json
   def index
@@ -19,13 +21,14 @@ class OperasController < ApplicationController
 
   # GET /operas/1/edit
   def edit
+
   end
 
   # POST /operas
   # POST /operas.json
   def create
     @opera = Opera.new(opera_params)
-
+    @opera.artista_id = current_user.artista_id
     respond_to do |format|
       if @opera.save
         format.html { redirect_to @opera, notice: 'Opera was successfully created.' }
@@ -56,19 +59,19 @@ class OperasController < ApplicationController
   def destroy
     @opera.destroy
     respond_to do |format|
-      format.html { redirect_to operas_url, notice: 'Opera was successfully destroyed.' }
+      format.html { redirect_to root_path, notice: 'Opera was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_opera
-      @opera = Opera.find(params[:id])
-    end
+  def set_opera
+    @opera = Opera.find(params[:id])
+  end
 
     # Only allow a list of trusted parameters through.
-    def opera_params
-      params.fetch(:opera, {})
-    end
+  def opera_params
+    params.require(:opera).permit(:titolo, :tecnica, :anno, :url)
+  end
 end

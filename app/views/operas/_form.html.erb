@@ -11,7 +11,28 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-12 col-12-mobilep ">
+    <%= form.label "Titolo Opera" %>
+    <%= form.text_field :titolo, :required => true %>
   </div>
+
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Tecnica" %>
+    <%= form.text_field :tecnica, :required => true %>
+  </div>
+
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Anno" %>
+    <%= form.number_field :anno, :required => true %>
+  </div>
+  <div class="col-12 col-12-narrower">
+    <%= form.label :"Carica una foto" %>
+    <%= form.file_field :url %>
+  </div>
+
+  <div class="col-12 col-12-narrower">
+    <%= form.submit %>
+    <%= link_to 'Elimina', opera_path(id: @opera.id), :method => :delete, class: "button"%>
+  </div>
+
 <% end %>

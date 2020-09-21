@@ -12,15 +12,28 @@
   <meta name="turbolinks-visit-control" content="reload">
   <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
   <%= stylesheet_link_tag 'gallery/main'%>
-  <%= javascript_include_tag 'gallery/jquery.min.js' %>
+
 </head>
-<body>
+<body class="is-preload">
+<%= javascript_include_tag 'jquery.min.js' %>
 <!-- Header -->
 <header id="header">
   <h1><%= link_to 'ArtOnRails', root_path %></h1>
   <nav>
     <ul>
-      <li><a href="#footer" class="icon solid fa-info-circle">About</a></li>
+      <li><%= link_to "Cerca", root_path %></li>
+      <% if current_user == nil %>
+        <li><%= link_to "Registrati", new_user_registration_path %></li>
+      <% elsif current_user.artista_id == nil %>
+        <li><%= link_to "Esponi", new_artistum_path %></li>
+      <%else %>
+        <li><%= link_to "Portfolio", artistum_path(current_user.artista_id) %></li>
+      <%end %>
+      <%if user_signed_in? %>
+        <li><%= link_to "Log Out", user_sign_out_path %></li>
+      <%else  %>
+        <li><%= link_to "Log in", new_user_session_path %></li>
+      <%end %>
     </ul>
   </nav>
 </header>
@@ -33,9 +46,9 @@
 </div>
 
 <!-- Scripts -->
-<%= javascript_include_tag 'gallery/browser.min.js' %>
-<%= javascript_include_tag 'gallery/jquery.poptrox.min.js' %>
-<%= javascript_include_tag 'gallery/breakpoints.min.js' %>
+<%= javascript_include_tag 'browser.min.js' %>
+<%= javascript_include_tag 'jquery.poptrox.min' %>
+<%= javascript_include_tag 'breakpoints.min.js' %>
 <%= javascript_include_tag 'gallery/util.js' %>
 <%= javascript_include_tag 'gallery/main.js' %>
 

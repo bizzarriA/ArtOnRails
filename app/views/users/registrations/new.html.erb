@@ -1,29 +1,25 @@
 <h2>Registrati</h2>
-<div class="row gtr-uniform">
-  <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "row gtr-uniform"})do |f| %>
-    <%= render "devise/shared/error_messages", resource: resource %>
 
-    <p class="col-4 col-12-narrower">
+<%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "row gtr-uniform"})do |f| %>
+  <%#= render "devise/shared/error_messages", resource: resource %>
+  <div >
+    <p class="col-12 col-12-narrower">
       <%= f.text_field :nome, autofocus: true, placeholder: "nome"%>
     </p>
-
-    <p class="col-4 col-12-narrower">
+    <p class="col-12 col-12-narrower">
       <%= f.text_field :cognome, autofocus: true, placeholder: "cognome"%>
     </p>
-    <p>
+    <p class="col-12 col-12-narrower">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email"%>
     </p>
-
-    <p>
+    <p class="col-12 col-12-narrower">
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "password" %>
     </p>
-
-    <p>
+    <p class="col-12 col-12-narrower">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "repeat password" %>
     </p>
-
-    <p>
+    <p class="col-4 col-12-narrower">
       <%= f.submit "Registrati" %>
     </p>
-  <% end %>
-</div>
+  </div>
+<% end %>

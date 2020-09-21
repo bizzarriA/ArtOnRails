@@ -7,14 +7,14 @@
     <p class="error col-12 col-12-narrower  ">
       <%=flash[:alert] %>
     </p>
-    <p class="col-6 col-12-narrower">
+    <p class="col-12 col-12-narrower">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email" %>
     </p>
 
-    <p class="col-6 col-12-narrower">
+    <p class="col-12 col-12-narrower">
       <%= f.password_field :password, autocomplete: "current-password", placeholder: "Password" %>
     </p>
-    <p class="col-4 col-12-narrower">
+    <p class="col-12 col-12-narrower">
     <% if devise_mapping.rememberable? %>
 
         <%= f.check_box :remember_me %>
