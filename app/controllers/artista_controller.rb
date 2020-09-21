@@ -6,6 +6,7 @@ class ArtistaController < ApplicationController
   # GET /artista/1.json
   def show
     @operas = Opera.where('artista_id=?', @artistum.id)
+    @user = User.find_by_artista_id(@artistum.id)
   end
 
   # GET /artista/new
@@ -61,7 +62,7 @@ class ArtistaController < ApplicationController
   private
   # Use callbacks to share common setup or constraints between actions.
   def set_artistum
-    @artistum = Artistum.find(current_user.artista_id)
+    @artistum = Artistum.find(params[:id])
   end
 
   # Only allow a list of trusted parameters through.

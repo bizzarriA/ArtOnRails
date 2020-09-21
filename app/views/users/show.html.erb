@@ -1,4 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<%= link_to 'Edit', edit_user_path(@user) %> |
-<%= link_to 'Back', users_path %>
+<h2>Registrati</h2>
+
+<div >
+  <p class="col-12 col-12-narrower">
+    <%= @user.nome%>
+  </p>
+  <p class="col-12 col-12-narrower">
+    <%= @user.cognome%>
+  </p>
+  <p class="col-12 col-12-narrower">
+    <%= @user.email%>
+  </p>
+</div>
+
+
+<%if @user.artista_id != nil %>
+  <%= link_to 'Portfolio', artistum_path(@user.artista_id) %> |
+<%end %>
+<%= link_to 'Edit', edit_user_registration_path(@user) %> |
+<%= link_to 'Back', root_path %>
