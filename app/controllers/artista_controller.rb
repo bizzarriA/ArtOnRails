@@ -1,17 +1,20 @@
 class ArtistaController < ApplicationController
   before_action :set_artistum, only: [:show, :edit, :update, :destroy]
-  layout "gallery"
+
 
   # GET /artista/1
   # GET /artista/1.json
   def show
+
     @operas = Opera.where('artista_id=?', @artistum.id)
     @user = User.find_by_artista_id(@artistum.id)
+    render layout: "gallery"
   end
 
   # GET /artista/new
   def new
     @artistum = Artistum.new
+    render layout: "application"
   end
 
   # GET /artista/1/edit

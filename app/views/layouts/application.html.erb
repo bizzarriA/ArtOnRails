@@ -34,7 +34,7 @@
         <% elsif current_user.artista_id == nil %>
           <li><%= link_to "Esponi", new_artistum_path %></li>
         <%else %>
-          <li><%= link_to "Portfolio", artistum_path(current_user.artista_id) %></li>
+          <li><%= link_to "Opere", artistum_path(current_user.artista_id) %></li>
         <%end %>
         <%if user_signed_in? %>
           <li><%= link_to "Profilo", users_path(id: current_user.id) %></li>
