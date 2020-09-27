@@ -17,12 +17,14 @@ class SearchesController < ApplicationController
   def create
     @search = Search.new(search_params)
     @search.save!
-    redirect_to searches_path
+    redirect_to searches_path(id: @search.id)
   end
 
   # GET /searches/1
   def show
-    @search = Search.search(search_params)
+    search = Search.find(params[:id])
+    @search = Search.search(search)
+    render layout: "gallery"
   end
 
   private

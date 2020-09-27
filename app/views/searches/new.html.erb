@@ -1,21 +1,21 @@
 <%= form_for @search, html: {class: "pure-form"} do |form| %>
   <div class="col-12 col-12-mobilep ">
     <%= form.label "Titolo Opera" %>
-    <%= form.text_field :titolo%>
+    <%= form.text_field :titolo, value: 'all' %>
   </div>
 
   <div class="col-12 col-12-mobilep">
     <%= form.label "Tecnica" %>
-    <%= form.text_field :tecnica %>
+    <%= form.text_field :tecnica, value: 'all' %>
   </div>
 
   <div class="col-12 col-12-mobilep">
     <%= form.label "Anno" %>
-    <%= form.number_field :anno %>
+    <%= form.number_field :anno  %>
   </div>
   <div class="col-12 col-12-mobilep">
     <%= form.label "Artista" %>
-    <%= form.text_field :artista %>
+    <%= form.text_field :artista, value: 'all'  %>
   </div>
 
   <div class="col-12 col-12-narrower">

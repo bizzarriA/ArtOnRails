@@ -21,7 +21,7 @@
   <h1><%= link_to 'ArtOnRails', root_path %></h1>
   <nav>
     <ul>
-      <li><%= link_to "Cerca", root_path %></li>
+      <li><%= link_to "Cerca", new_searches_path %></li>
       <% if current_user == nil %>
         <li><%= link_to "Registrati", new_user_registration_path %></li>
       <% elsif current_user.artista_id == nil %>

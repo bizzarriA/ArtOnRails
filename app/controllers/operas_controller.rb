@@ -31,7 +31,7 @@ class OperasController < ApplicationController
     @opera.artista_id = current_user.artista_id
     respond_to do |format|
       if @opera.save
-        format.html { redirect_to @opera, notice: 'Opera was successfully created.' }
+        format.html { redirect_to artistum_path(@opera.artista_id), notice: 'Opera was successfully created.' }
         format.json { render :show, status: :created, location: @opera }
       else
         format.html { render :new }

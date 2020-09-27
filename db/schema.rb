@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_25_105655) do
+ActiveRecord::Schema.define(version: 2020_09_25_103632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,20 +37,20 @@ ActiveRecord::Schema.define(version: 2020_09_25_105655) do
   end
 
   create_table "pagamentos", force: :cascade do |t|
-    t.string "nome"
-    t.string "cognome"
-    t.date "dob"
-    t.string "cellulare"
-    t.string "url_foto"
+    t.decimal "numero"
+    t.decimal "mese"
+    t.decimal "anno"
+    t.decimal "cvv"
+    t.string "intestatario"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "searches", force: :cascade do |t|
-    t.string "titolo", default: "%"
-    t.string "tecnica", default: "%"
-    t.decimal "anno", default: "0.0"
-    t.string "artista", default: "%"
+    t.string "titolo", default: "all"
+    t.string "tecnica", default: "all"
+    t.decimal "anno"
+    t.string "artista", default: "all"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

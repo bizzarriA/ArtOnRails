@@ -32,7 +32,9 @@
 
   <div class="col-12 col-12-narrower">
     <%= form.submit %>
-    <%= link_to 'Elimina', opera_path(id: @opera.id), :method => :delete, class: "button"%>
+    <%unless @opera.id.nil? %>
+      <%= link_to 'Elimina', opera_path(id: @opera.id), :method => :delete, class: "button"%>
+    <%end %>
   </div>
 
 <% end %>
