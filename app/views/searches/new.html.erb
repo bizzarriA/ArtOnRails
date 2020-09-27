@@ -1,12 +1,12 @@
 <%= form_for @search, html: {class: "pure-form"} do |form| %>
   <div class="col-12 col-12-mobilep ">
     <%= form.label "Titolo Opera" %>
-    <%= form.text_field :titolo, value: 'all' %>
+    <%= form.text_field :titolo, value: 'All' %>
   </div>
 
   <div class="col-12 col-12-mobilep">
     <%= form.label "Tecnica" %>
-    <%= form.text_field :tecnica, value: 'all' %>
+    <%= form.collection_select :tecnica, ['All']+Opera::TECNICHE, :to_s, :to_s %>
   </div>
 
   <div class="col-12 col-12-mobilep">
@@ -15,7 +15,7 @@
   </div>
   <div class="col-12 col-12-mobilep">
     <%= form.label "Artista" %>
-    <%= form.text_field :artista, value: 'all'  %>
+    <%= form.text_field :artista, value: 'All'  %>
   </div>
 
   <div class="col-12 col-12-narrower">

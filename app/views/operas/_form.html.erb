@@ -18,7 +18,7 @@
 
   <div class="col-12 col-12-mobilep">
     <%= form.label "Tecnica" %>
-    <%= form.text_field :tecnica, :required => true %>
+    <%= form.collection_select :tecnica, Opera::TECNICHE, :to_s, :to_s %>
   </div>
 
   <div class="col-12 col-12-mobilep">
