@@ -6,7 +6,6 @@ Rails.application.routes.draw do
   end
   resource :users, only: [:show]
   resources :pagamentos
-  resources :compratores
   resources :operas
   resources :artista
   resource :searches

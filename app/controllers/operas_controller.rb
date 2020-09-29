@@ -17,6 +17,7 @@ class OperasController < ApplicationController
   # GET /operas/new
   def new
     @opera = Opera.new
+
   end
 
   # GET /operas/1/edit
@@ -77,6 +78,6 @@ class OperasController < ApplicationController
   end
 
   def search_params
-    params.permit(:titolo, :tecnica, :anno, :artista)
+    params.permit(:titolo, :tecnica, :anno, :artista, formatos_attributes: [:id])
   end
 end

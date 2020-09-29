@@ -1,0 +1,4 @@
+class VendibilesController < ApplicationController
+
+
+end

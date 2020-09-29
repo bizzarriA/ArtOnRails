@@ -6,5 +6,7 @@ class User < ApplicationRecord
 
   belongs_to :artistum, optional: true, dependent: :destroy
   has_many :pagamentos, inverse_of: :user, dependent: :destroy
+  has_many :acquistos, inverse_of: :user, dependent: :destroy
+  has_many :operas, through: :acquistos
 
 end

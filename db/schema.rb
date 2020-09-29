@@ -10,17 +10,24 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_09_27_145924) do
+ActiveRecord::Schema.define(version: 2020_09_29_170559) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "artista", force: :cascade do |t|
+  create_table "acquistos", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "opera_id"
+    t.bigint "user_id"
+    t.bigint "pagamento_id"
+    t.boolean "merchandising"
+    t.index ["opera_id"], name: "index_acquistos_on_opera_id"
+    t.index ["pagamento_id"], name: "index_acquistos_on_pagamento_id"
+    t.index ["user_id"], name: "index_acquistos_on_user_id"
   end
 
-  create_table "compratores", force: :cascade do |t|
+  create_table "artista", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end
@@ -64,7 +71,6 @@ ActiveRecord::Schema.define(version: 2020_09_27_145924) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "artista_id"
-    t.bigint "compratore_id"
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
@@ -75,13 +81,12 @@ ActiveRecord::Schema.define(version: 2020_09_27_145924) do
     t.datetime "confirmation_sent_at"
     t.string "unconfirmed_email"
     t.index ["artista_id"], name: "index_users_on_artista_id"
-    t.index ["compratore_id"], name: "index_users_on_compratore_id"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "acquistos", "operas"
   add_foreign_key "operas", "artista", column: "artista_id"
   add_foreign_key "users", "artista", column: "artista_id"
-  add_foreign_key "users", "compratores"
 end

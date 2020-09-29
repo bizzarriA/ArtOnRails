@@ -8,4 +8,10 @@ class Opera < ApplicationRecord
               'Serigrafia', 'Scultura', 'Street', 'Altro']
 
   has_one :artistum
+  has_one :pagamento
+  has_many :acquistos, inverse_of: :opera, dependent: :destroy
+  has_many :users, through: :acquistos
+  has_many :vendibiles, inverse_of: :opera, dependent: :destroy
+
+
 end
