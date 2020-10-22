@@ -30,8 +30,11 @@
     <%= form.file_field :url %>
   </div>
 
-    <%= form.label :merchandising, "Merchandising Abilitato" %>
+  <div class="col-12 col-12-narrower">
     <%= form.check_box :merchandising, checked_value: 1, unchecked_value: 0 %>
+    <%= form.label :merchandising, "Merchandising" %>
+    <%= link_to '', root_path, class:"fa fa-info-circle"%>
+  </div>
 
   <div class="col-12 col-12-narrower">
     <%= form.submit %>

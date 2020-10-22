@@ -1,30 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="artonrails@localhost" uuid="b0310aac-1a79-4d21-875a-53b7ac6bd40a">
+    <data-source source="LOCAL" name="Rails ArtOnRails: test" uuid="3b1f8bfc-4168-43b3-9dad-7bb0c90c2e02">
       <driver-ref>postgresql</driver-ref>
-      <synchronize>true</synchronize>
-      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
-      <jdbc-url>jdbc:postgresql://localhost:5432/artonrails</jdbc-url>
-    </data-source>
-    <data-source source="LOCAL" name="Rails ArtOnRails: test" uuid="ed8f90a2-9731-4e59-9547-c65bb7731724">
-      <driver-ref>greenplum</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/artonrails_test</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="Rails ArtOnRails: production" uuid="01aa88b9-2e8f-4397-ba5e-7e7ed433d0f9">
-      <driver-ref>greenplum</driver-ref>
+    <data-source source="LOCAL" name="Rails ArtOnRails: production" uuid="60e98d31-73bb-4c23-b6d1-bee9252dd4ad">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
       <jdbc-driver>org.postgresql.Driver</jdbc-driver>
       <jdbc-url>jdbc:postgresql://127.0.0.1:5432/artonrails_production</jdbc-url>
     </data-source>
-    <data-source source="LOCAL" name="Rails ArtOnRails: development" uuid="ec0b022d-0e5b-4145-961f-bc1ae31198bd">
-      <driver-ref>greenplum</driver-ref>
+    <data-source source="LOCAL" name="Rails ArtOnRails: development" uuid="cb738bee-8435-4001-8ef3-85171817a3f6">
+      <driver-ref>postgresql</driver-ref>
       <synchronize>true</synchronize>
       <imported>true</imported>
       <remarks>$PROJECT_DIR$/config/database.yml</remarks>
