@@ -46,7 +46,7 @@ class OperasController < ApplicationController
   def update
     respond_to do |format|
       if @opera.update(opera_params)
-        format.html { redirect_to @opera, notice: 'Opera was successfully updated.' }
+        format.html { redirect_to artistum_path(@opera.artista_id), notice: 'Opera was successfully updated.' }
         format.json { render :show, status: :ok, location: @opera }
       else
         format.html { render :edit }
@@ -74,10 +74,10 @@ class OperasController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def opera_params
-    params.require(:opera).permit(:titolo, :tecnica, :anno, :url)
+    params.require(:opera).permit(:titolo, :tecnica, :anno, :url, :merchandising)
   end
 
   def search_params
-    params.permit(:titolo, :tecnica, :anno, :artista, formatos_attributes: [:id])
+    params.permit(:titolo, :tecnica, :anno, :artista)
   end
 end

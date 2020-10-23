@@ -1,0 +1,17 @@
+
+<%if @acquisti == nil %>
+  <div id="banner">
+    <h2>Nessuna opera rispetta i tuoi parametri di ricerca!</h2>
+  </div>
+<%else %>
+  <div id="main">
+    <%@acquisti.each do |acquisto| %>
+      <article class="thumb">
+        <%=link_to image_tag(acquisto.opera.url.url), (acquisto.opera.url.url),class: 'image' %>
+        <h2><%= acquisto.opera.titolo %></h2>
+        provaaaa
+        <p> <%= acquisto.opera.tecnica %>,<%= acquisto.opera.anno %></p>
+      </article>
+    <%end %>
+  </div>
+<%end %>

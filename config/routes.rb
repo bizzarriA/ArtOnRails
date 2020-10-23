@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   resources :operas
   resources :artista
   resource :searches
+  resource :acquistos
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
   root to: 'homes#index'
 end

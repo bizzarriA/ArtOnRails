@@ -50,7 +50,7 @@
 		.nav-previous,
 		.nav-next {
 			@include vendor('transition', 'opacity #{_duration(transition)} ease-in-out');
-			background-image: url('images/arrow.svg');
+			//background-image: url('images/arrow.svg');
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: 5em;
