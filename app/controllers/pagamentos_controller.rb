@@ -1,74 +1,97 @@
 class PagamentosController < ApplicationController
-  before_action :set_pagamento, only: [:show, :edit, :update, :destroy]
+  before_action :set_pay_method, only: [:show, :edit, :update, :destroy]
+  before_action :get_user
 
-  # GET /pagamentos
-  # GET /pagamentos.json
+  # GET /users/:id/payMethods
   def index
-    @pagamentos = Pagamento.all
+    @pay_methods = Pagamento.where('user_id = ?', current_user.id)
+    @scaduti=[]
+    i=0
+    @pay_methods.each do |pay|
+      @scaduti[i] = pay_scaduto(pay)
+      i+=1
+    end
   end
 
-  # GET /pagamentos/1
-  # GET /pagamentos/1.json
+  # GET /users/:id/payMethods/:id
   def show
+    @scaduto = pay_scaduto(@pay_method)
   end
 
-  # GET /pagamentos/new
+  # GET /users/:id/payMethods/new
   def new
-    @pagamento = Pagamento.new
+    @pay_method = Pagamento.new
+    session[:return_to] ||= request.referer
   end
 
-  # GET /pagamentos/1/edit
+  # GET /users/:id/payMethods/edit
   def edit
   end
 
-  # POST /pagamentos
-  # POST /pagamentos.json
+  # POST /users/:id/payMethods/
   def create
-    @pagamento = Pagamento.new(pagamento_params)
+    @pay_method = Pagamento.new(pay_params)
 
     respond_to do |format|
-      if @pagamento.save
-        format.html { redirect_to @pagamento, notice: 'Pagamento was successfully created.' }
-        format.json { render :show, status: :created, location: @pagamento }
+      if @pay_method.save
+        format.html { redirect_to (session.delete(:return_to) || pagamento_path(@user)), notice: 'Pay method was successfully created.' }
+        format.json { render :show, status: :created, location: @pay_method }
       else
         format.html { render :new }
-        format.json { render json: @pagamento.errors, status: :unprocessable_entity }
+        format.json { render json: @pay_method.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PATCH/PUT /pagamentos/1
-  # PATCH/PUT /pagamentos/1.json
+  # PATCH/PUT /vehicles/1
+  # PATCH/PUT /vehicles/1.json
   def update
     respond_to do |format|
-      if @pagamento.update(pagamento_params)
-        format.html { redirect_to @pagamento, notice: 'Pagamento was successfully updated.' }
-        format.json { render :show, status: :ok, location: @pagamento }
+      if @pay_method.update(pay_params)
+        format.html { redirect_to pagamento_path(@pay_method), notice: 'Vehicle was successfully updated.' }
+        format.json { render :show, status: :ok, location: @pay_method }
       else
         format.html { render :edit }
-        format.json { render json: @pagamento.errors, status: :unprocessable_entity }
+        format.json { render json: @pay_method.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /pagamentos/1
-  # DELETE /pagamentos/1.json
+  # DELETE /vehicles/1
+  # DELETE /vehicles/1.json
   def destroy
-    @pagamento.destroy
+    @pay_method.destroy
     respond_to do |format|
-      format.html { redirect_to pagamentos_url, notice: 'Pagamento was successfully destroyed.' }
+      format.html { redirect_to pagamento_path(@pay_method), notice: 'Vehicle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pagamento
-      @pagamento = Pagamento.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def pagamento_params
-      params.fetch(:pagamento, {})
+  def set_pay_method
+    @pay_method = Pagamento.find(params[:id])
+  end
+
+  def get_user
+    @user = User.find(current_user.id)
+  end
+
+  # Only allow a list of trusted parameters through.
+  def pay_params
+    params.require(:pagamento).permit(:intestatario, :numero, :mese, :anno, :cvv, :user_id)
+  end
+
+  def pay_scaduto(pay)
+    time = Time.new
+    anno = pay.anno + 2000
+    if anno < time.year
+      return true
+    elsif anno == time.year && pay.mese < time.month
+      return true
+    else
+      return false
     end
+  end
+
 end

@@ -5,11 +5,11 @@ Una galleria d'arte online nella quale possono accedere artisti, compratori e no
 L'artista registrato potrà:
 - (FATTO) Caricare le sue opere d'arte con tutte le descrizioni del caso.
 - (FATTO)Visionare le proprie opere e gestire eventuali modifiche e cancellazioni.
-- Scegliere più formati per le proprie opere (ad esempio stampa di grafiche su magliette, stampe su vari formati A4,A3,A5 ecc)
+- (FATTO - Opzione Merchandising) Scegliere più formati per le proprie opere (ad esempio stampa di grafiche su magliette, stampe su vari formati A4,A3,A5 ecc)
 - Decidere di sfruttare una modalità "asta" per la vendita delle proprie opere.
 
 Il compratore invece, potrà:
-- comprare le opere d'arte in tutti i formati messi a disposizione dall'artista
+- (FATTO - Opzione Merchandising) comprare le opere d'arte in tutti i formati messi a disposizione dall'artista
 - Possibilità di gestione dei preferiti
 - (FATTO) Visionare tutte le opere esposte con meccanismo di ricerca (per tipo, artista, stile ecc)
 (Eventuali aggiunte)
@@ -18,9 +18,9 @@ Il compratore invece, potrà:
 - Gesitione metodo ti pagamento (l'alternativa sarebbe non gestirlo e permettere a compratori e artisti di concordarsi privatamente per la vendita e l'eventuale spedizione e sarebbe quindi compito dell'artista assegnare all'opera il flag "Venduto" nel caso di opere non riproducibili)
 
 L'utente curioso:
-- Visionare tutte le opere esposte con meccanismo di ricerca (per tipo, artista, stile ecc)
+- (FATTO) Visionare tutte le opere esposte con meccanismo di ricerca (per tipo, artista, stile ecc)
 (Eventuali aggiunte)
-- Visualizzare progilo artista
+- Visualizzare profilo artista
 
 In generale le immagini delle opere sposte dovranno avere un meccanismo che impedisca agli utenti di scaricarle senza pagare (soprattuto nel caso di disegni grafici). Ciò potrebbe avvenire tramite l'applicazione di stemmi o firme semitrasparenti nel centro dell'immagine.
 

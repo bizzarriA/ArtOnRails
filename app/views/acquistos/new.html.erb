@@ -6,10 +6,14 @@
     <div>Per quest'opera è attivo il merchandising, <br/> contatta l'artista per maggiori informazioni!<br/>
       email artista: <%= @artista.email %></div>
   <%end %>
-  <%= form_for @acquisto, html: {class: "pure-form"} do |form| %>
-    <%= form.hidden_field :opera_id, :value => @opera.id%>
-    <div class="col-12 col-12-narrower">
-      <%= form.submit "Acquista!" %>
-    </div>
+  <%if @acquistato%>
+    <div> Hai già acquistato questa opera!</div>
+  <%else %>
+    <%= form_for @acquisto, html: {class: "pure-form"} do |form| %>
+      <%= form.hidden_field :opera_id, :value => @opera.id%>
+      <div class="col-12 col-12-narrower">
+        <%= form.submit "Acquista!" %>
+      </div>
+    <%end %>
   <%end %>
 </div>

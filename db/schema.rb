@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_23_141336) do
+ActiveRecord::Schema.define(version: 2020_10_26_093301) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -45,13 +45,15 @@ ActiveRecord::Schema.define(version: 2020_10_23_141336) do
   end
 
   create_table "pagamentos", force: :cascade do |t|
-    t.decimal "numero"
-    t.decimal "mese"
-    t.decimal "anno"
-    t.decimal "cvv"
+    t.string "numero"
+    t.integer "mese"
+    t.integer "anno"
+    t.string "cvv"
     t.string "intestatario"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.index ["user_id"], name: "index_pagamentos_on_user_id"
   end
 
   create_table "searches", force: :cascade do |t|
@@ -89,5 +91,6 @@ ActiveRecord::Schema.define(version: 2020_10_23_141336) do
 
   add_foreign_key "acquistos", "operas"
   add_foreign_key "operas", "artista", column: "artista_id"
+  add_foreign_key "pagamentos", "users"
   add_foreign_key "users", "artista", column: "artista_id"
 end

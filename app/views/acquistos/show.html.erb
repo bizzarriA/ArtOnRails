@@ -7,10 +7,10 @@
   <div id="main">
     <%@acquisti.each do |acquisto| %>
       <article class="thumb">
-        <%=link_to image_tag(acquisto.opera.url.url), (acquisto.opera.url.url),class: 'image' %>
-        <h2><%= acquisto.opera.titolo %></h2>
+        <%=link_to image_tag(acquisto.url.url), (acquisto.url.url),class: 'image' %>
+        <h2><%= acquisto.titolo %></h2>
         provaaaa
-        <p> <%= acquisto.opera.tecnica %>,<%= acquisto.opera.anno %></p>
+        <p> <%= acquisto.tecnica %>,<%= acquisto.anno %></p>
       </article>
     <%end %>
   </div>

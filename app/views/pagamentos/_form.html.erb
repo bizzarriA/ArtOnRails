@@ -1,8 +1,7 @@
-<%= form_with(model: pagamento, local: true) do |form| %>
+<%= form_with model:[@pay_method], local: true, html: {class: "col-12 col-12-narrower"} do |form| %>
   <% if pagamento.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(pagamento.errors.count, "error") %> prohibited this pagamento from being saved:</h2>
-
+    <div id="error_explanation" class="col-12 col-12-narrower error">
+      <h2><%= pluralize(pagamento.errors.count, "Error") %>:</h2>
       <ul>
         <% pagamento.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -11,7 +10,35 @@
     </div>
   <% end %>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :numero %>
+    <%= form.text_field :numero %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :intestatario %>
+    <%= form.text_field :intestatario %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :mese, 'Mese Scadenza (mm)'%>
+    <%= form.number_field :mese %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :anno, 'Anno scadenza (aa)' %>
+    <%= form.number_field :anno %>
+  </div>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.label :cvv %>
+    <%= form.number_field :cvv %>
+  </div>
+
+  <%= form.hidden_field :user_id, :value => current_user.id %>
+
+  <div class="col-4 col-12-mobilep">
+    <%= form.submit "inserisci" %>
+    <%= link_to 'Back', pagamentos_path, class:'button special' %>
   </div>
 <% end %>

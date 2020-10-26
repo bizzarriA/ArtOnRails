@@ -1,25 +1,43 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Pagamentos</h1>
+<div class="col-12 col-12-narrower">
+  <h2>
+    <strong>Ecco i tuoi metodi di pagamento!</strong>
+  </h2>
+</div>
 
 <table>
   <thead>
-    <tr>
-      <th colspan="3"></th>
-    </tr>
+  <tr>
+    <th>Numero Carta</th>
+    <th>Intestatario</th>
+    <th>scadenza</th>
+    <th colspan="4"></th>
+  </tr>
   </thead>
 
   <tbody>
-    <% @pagamentos.each do |pagamento| %>
-      <tr>
-        <td><%= link_to 'Show', pagamento %></td>
-        <td><%= link_to 'Edit', edit_pagamento_path(pagamento) %></td>
-        <td><%= link_to 'Destroy', pagamento, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <%i=0 %>
+  <% @pay_methods.each do |pay_method| %>
+    <tr>
+      <td><%= pay_method.numero %></td>
+      <td><%= pay_method.intestatario %></td>
+      <td><%= pay_method.mese%> / <%= pay_method.anno%></td>
+      <%if @scaduti[i] %>
+        <td class="error">Metodo di pagamento scaduto</td>
+      <%else%>
+        <td colspan="1"></td>
+      <% end %>
+      <% i+=1 %>
+      <td><%= link_to 'Modifica', edit_pagamento_path(current_user.id, pay_method.id), class: "button"  %></td>
+      <td><%= link_to 'Elimina metodo', pagamento_path(current_user.id, pay_method.id), method: :delete, data: { confirm: 'Sciruo di voler eliminare questo metodo di pagamento?' }, class: "button special"  %></td>
+    </tr>
+  <% end %>
   </tbody>
 </table>
 
 <br>
-
-<%= link_to 'New Pagamento', new_pagamento_path %>
+<div class="col-5 col-12-mobile">
+  <%= link_to 'Aggiungi un metodo di pagamento', new_pagamento_path, class: "button" %>
+</div>
+<div class="col-7 col-12-mobile">
+  <%= link_to "Back", users_path(id: current_user.id) %>
+</div>
