@@ -1,25 +1,29 @@
 <%if @pay_method.user_id == current_user.id %>
-  <p>
+  <p class="col-12 col-12-narrower">
     <strong>Numero:</strong>
     <%= @pay_method.numero %>
   </p>
 
-  <p>
+  <p class="col-12 col-12-narrower">
     <strong>Intestatario:</strong>
     <%= @pay_method.intestatario %>
   </p>
 
-  <p>
+  <p class="col-12 col-12-narrower">
     <strong>Scadenza:</strong>
     <%= @pay_method.mese%> / <%= @pay_method.anno %>
   </p>
   <%if @scaduto %>
-    <p class="error">Metodo di pagamento scaduto!</p>
+    <p class="col-12 col-12-narrower">
+      Metodo di pagamento scaduto!
+    </p>
   <% end %>
 
-
-  <%= link_to 'Edit', edit_pagamento_path(current_user.id, @pay_method.id) %>
-  <%= link_to 'Back', :back %>
+  <span class="col-2 col-12-narrower">
+    <%= link_to ' ', edit_pagamento_path(@pay_method.id), class: "far fa-edit"%>
+    <%= link_to ' ', pagamento_path(@pay_method.id), method: :delete, data: { confirm: 'Sciruo di voler eliminare questo metodo di pagamento?' }, class: "far fa-trash-alt"  %>
+    <%= link_to "", pagamentos_path, class:"fas fa-reply" %>
+  </span>
 <%else %>
   <h2 class="error">Non puoi visualizzare questo metodo di pagamento!</h2>
 <%end %>

@@ -62,7 +62,7 @@ class PagamentosController < ApplicationController
   def destroy
     @pay_method.destroy
     respond_to do |format|
-      format.html { redirect_to pagamento_path(@pay_method), notice: 'Vehicle was successfully destroyed.' }
+      format.html { redirect_to pagamentos_path, notice: 'Vehicle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end

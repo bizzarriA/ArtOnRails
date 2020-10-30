@@ -10,34 +10,34 @@
     </div>
   <% end %>
 
-  <div class="col-4 col-12-mobilep">
+  <div class="col-12 col-12-mobilep ">
     <%= form.label :numero %>
     <%= form.text_field :numero %>
   </div>
 
-  <div class="col-4 col-12-mobilep">
+  <div class="col-12 col-12-mobilep ">
     <%= form.label :intestatario %>
     <%= form.text_field :intestatario %>
   </div>
 
-  <div class="col-4 col-12-mobilep">
+  <div class="col-12 col-12-mobilep ">
     <%= form.label :mese, 'Mese Scadenza (mm)'%>
     <%= form.number_field :mese %>
   </div>
 
-  <div class="col-4 col-12-mobilep">
+  <div class="col-12 col-12-mobilep ">
     <%= form.label :anno, 'Anno scadenza (aa)' %>
     <%= form.number_field :anno %>
   </div>
 
-  <div class="col-4 col-12-mobilep">
+  <div class="col-12 col-12-mobilep ">
     <%= form.label :cvv %>
     <%= form.number_field :cvv %>
   </div>
 
   <%= form.hidden_field :user_id, :value => current_user.id %>
 
-  <div class="col-4 col-12-mobilep">
+  <div class="col-12 col-12-mobilep ">
     <%= form.submit "inserisci" %>
     <%= link_to 'Back', pagamentos_path, class:'button special' %>
   </div>

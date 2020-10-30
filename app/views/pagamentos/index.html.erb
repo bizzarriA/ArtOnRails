@@ -1,6 +1,6 @@
 <div class="col-12 col-12-narrower">
   <h2>
-    <strong>Ecco i tuoi metodi di pagamento!</strong>
+    <strong>I tuoi metodi di pagamento!</strong>
   </h2>
 </div>
 
@@ -18,7 +18,7 @@
   <%i=0 %>
   <% @pay_methods.each do |pay_method| %>
     <tr>
-      <td><%= pay_method.numero %></td>
+      <td><%= link_to pay_method.numero, pagamento_path(pay_method.id) %></td>
       <td><%= pay_method.intestatario %></td>
       <td><%= pay_method.mese%> / <%= pay_method.anno%></td>
       <%if @scaduti[i] %>
@@ -27,17 +27,16 @@
         <td colspan="1"></td>
       <% end %>
       <% i+=1 %>
-      <td><%= link_to 'Modifica', edit_pagamento_path(current_user.id, pay_method.id), class: "button"  %></td>
-      <td><%= link_to 'Elimina metodo', pagamento_path(current_user.id, pay_method.id), method: :delete, data: { confirm: 'Sciruo di voler eliminare questo metodo di pagamento?' }, class: "button special"  %></td>
+      <td><%= link_to ' ', edit_pagamento_path(pay_method.id), class: "far fa-edit"%></td>
+      <td><%= link_to ' ', pagamento_path(pay_method.id), method: :delete, data: { confirm: 'Sciruo di voler eliminare questo metodo di pagamento?' }, class: "far fa-trash-alt"  %></td>
     </tr>
   <% end %>
+  <tr>
+    <td colspan="5"></td>
+    <td>
+      <%= link_to '', new_pagamento_path, class: "fas fa-plus" %>
+      <%= link_to "", users_path(id: current_user.id), class:"fas fa-reply" %>
+    </td>
+  </tr>
   </tbody>
 </table>
-
-<br>
-<div class="col-5 col-12-mobile">
-  <%= link_to 'Aggiungi un metodo di pagamento', new_pagamento_path, class: "button" %>
-</div>
-<div class="col-7 col-12-mobile">
-  <%= link_to "Back", users_path(id: current_user.id) %>
-</div>
