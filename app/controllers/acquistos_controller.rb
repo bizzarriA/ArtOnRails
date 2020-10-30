@@ -1,6 +1,6 @@
 class AcquistosController < ApplicationController
 
-  before_action :set_opera, only: [:new]
+  before_action :set_opera, only: [:new, :create]
 
   def show
     @acquisti = Acquisto.opere(current_user.id)
@@ -9,8 +9,9 @@ class AcquistosController < ApplicationController
 
   def new
     @acquisto = Acquisto.new
+    @pay_methods = Pagamento.find_pay_methods(current_user.id)
     # byebug
-    if Acquisto.where("user_id = ? AND opera_id= ?", current_user.id, params[:opera_id])
+    if Acquisto.where("user_id = ? AND opera_id= ?", current_user.id, @opera.id).exists?
       @acquistato = true
     else
       @acquistato = false
@@ -26,7 +27,7 @@ class AcquistosController < ApplicationController
         format.html { redirect_to acquistos_path, notice: 'Acquisto was successfully created.' }
         format.json { render :show, status: :created, location: @acquisto }
       else
-        format.html { render :new }
+        format.html { render :show }
         format.json { render json: @acquisto.errors, status: :unprocessable_entity }
       end
     end
@@ -36,10 +37,10 @@ class AcquistosController < ApplicationController
   private
 
   def set_opera
-    @opera = Opera.find_by(params[:opera_id])
+    @opera = Opera.find(params[:opera_id])
   end
 
   def acquisto_params
-    params.require(:acquisto).permit(:opera_id)
+    params.require(:acquisto).permit(:opera_id, :pagamento_id)
   end
 end

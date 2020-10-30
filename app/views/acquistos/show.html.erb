@@ -1,7 +1,7 @@
 
 <%if @acquisti == nil %>
   <div id="banner">
-    <h2>Nessuna opera rispetta i tuoi parametri di ricerca!</h2>
+    <h2>Non hai acquistato ancora nessuna opera!</h2>
   </div>
 <%else %>
   <div id="main">
@@ -9,7 +9,6 @@
       <article class="thumb">
         <%=link_to image_tag(acquisto.url.url), (acquisto.url.url),class: 'image' %>
         <h2><%= acquisto.titolo %></h2>
-        provaaaa
         <p> <%= acquisto.tecnica %>,<%= acquisto.anno %></p>
       </article>
     <%end %>

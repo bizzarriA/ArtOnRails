@@ -1,19 +1,23 @@
-<div >
-  <%=image_tag(@opera.url.url) %>
-  <h3><%= @opera.titolo %></h3>
-  <div> <%= @opera.tecnica %>,<%= @opera.anno %></div>
-  <%if @opera.merchandising %>
-    <div>Per quest'opera è attivo il merchandising, <br/> contatta l'artista per maggiori informazioni!<br/>
-      email artista: <%= @artista.email %></div>
+<%=image_tag(@opera.url.url, height: 390) %>
+<h3><%= @opera.titolo %></h3>
+<div> <%= @opera.tecnica %>,<%= @opera.anno %></div>
+<%if @opera.merchandising %>
+  <div>Per quest'opera è attivo il merchandising, <br/> contatta l'artista per maggiori informazioni!<br/>
+    email artista: <%= @artista.email %></div>
+<%end %>
+<%if @acquistato%>
+  <div> Hai già acquistato questa opera!</div>
+<%else %>
+  <%= form_for @acquisto, html: {class: "pure-form"} do |form| %>
+    <%= form.hidden_field :opera_id, :value => @opera.id%>
+    <div class="col-12 col-12-narrow">
+      <strong>Metodo di pagamento</strong>
+      <%= link_to ' ',new_pagamento_path, class: 'fas fa-plus'%>
+      <%= form.collection_select :pagamento_id, @pay_methods, :id, :numero, {}, {required: true}%>
+
+    </div>
+    <div class="col-12 col-12-narrower">
+      <%= form.submit "Acquista!" %>
+    </div>
   <%end %>
-  <%if @acquistato%>
-    <div> Hai già acquistato questa opera!</div>
-  <%else %>
-    <%= form_for @acquisto, html: {class: "pure-form"} do |form| %>
-      <%= form.hidden_field :opera_id, :value => @opera.id%>
-      <div class="col-12 col-12-narrower">
-        <%= form.submit "Acquista!" %>
-      </div>
-    <%end %>
-  <%end %>
-</div>
+<%end %>

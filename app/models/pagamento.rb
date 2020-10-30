@@ -21,5 +21,9 @@ class Pagamento < ApplicationRecord
 
   validates_with PagamentoValidator
 
+  def self.find_pay_methods(user_id)
+    Pagamento.where("user_id = ?", user_id)
+  end
+
   belongs_to :user
 end

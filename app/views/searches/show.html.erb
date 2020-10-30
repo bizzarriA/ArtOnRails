@@ -11,10 +11,10 @@
         <h2><%= opera.titolo %></h2>
         <p> <%= opera.tecnica %>,<%= opera.anno %></p>
         <%if current_user != nil
-            if current_user.id == opera.artista_id %>
+            if current_user.artista_id == opera.artista_id %>
             <%= link_to 'Modifica', edit_opera_path(opera.id), class: "button"%>
           <% else %>
-            <%= link_to 'Acquista', new_acquistos_path(opera.id), class: "button"%>
+            <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
           <% end %>
           </article>
         <%end %>

@@ -1,6 +1,7 @@
 class Acquisto < ApplicationRecord
   validates :opera_id, presence: true
   validates :user_id, presence: true
+  validates :pagamento_id, presence: true
 
   def self.opere(user_id)
     acquisti = Acquisto.select('*').where('user_id = ?', user_id)
