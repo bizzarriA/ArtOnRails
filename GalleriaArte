@@ -14,13 +14,13 @@ Il compratore invece, potrà:
 - (FATTO) Visionare tutte le opere esposte con meccanismo di ricerca (per tipo, artista, stile ecc)
 (Eventuali aggiunte)
 - Accedere e gestire il proprio carrello 
-- Visualizzare profilo Artista
-- Gesitione metodo ti pagamento (l'alternativa sarebbe non gestirlo e permettere a compratori e artisti di concordarsi privatamente per la vendita e l'eventuale spedizione e sarebbe quindi compito dell'artista assegnare all'opera il flag "Venduto" nel caso di opere non riproducibili)
+- (FATTO) Visualizzare profilo Artista
+- (FATTO) Gesitione metodo ti pagamento (l'alternativa sarebbe non gestirlo e permettere a compratori e artisti di concordarsi privatamente per la vendita e l'eventuale spedizione e sarebbe quindi compito dell'artista assegnare all'opera il flag "Venduto" nel caso di opere non riproducibili)
 
 L'utente curioso:
 - (FATTO) Visionare tutte le opere esposte con meccanismo di ricerca (per tipo, artista, stile ecc)
 (Eventuali aggiunte)
-- Visualizzare profilo artista
+-(FATTO) Visualizzare profilo artista
 
 In generale le immagini delle opere sposte dovranno avere un meccanismo che impedisca agli utenti di scaricarle senza pagare (soprattuto nel caso di disegni grafici). Ciò potrebbe avvenire tramite l'applicazione di stemmi o firme semitrasparenti nel centro dell'immagine.
 

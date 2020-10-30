@@ -1,6 +1,6 @@
 <%=image_tag(@opera.url.url, height: 390) %>
 <h3><%= @opera.titolo %></h3>
-<div> <%= @opera.tecnica %>,<%= @opera.anno %></div>
+<div> <%= @opera.tecnica %>, <%= @opera.anno %>, <%= link_to (@artista.nome + ' ' +@artista.cognome), users_path(id: @artista.id)  %></div>
 <%if @opera.merchandising %>
   <div>Per quest'opera è attivo il merchandising, <br/> contatta l'artista per maggiori informazioni!<br/>
     email artista: <%= @artista.email %></div>

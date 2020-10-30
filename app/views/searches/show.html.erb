@@ -17,7 +17,9 @@
             <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
           <% end %>
           </article>
-        <%end %>
+        <%else %>
+          <%= link_to 'Show', opera_path(opera.id), class: "button"%>
+      <%end %>
     <%end %>
   </div>
 <%end %>

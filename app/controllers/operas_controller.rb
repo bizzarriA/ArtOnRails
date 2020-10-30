@@ -12,6 +12,7 @@ class OperasController < ApplicationController
   # GET /operas/1
   # GET /operas/1.json
   def show
+    @artista=User.find_by_artista_id(Artistum.find(@opera.artista_id).id)
   end
 
   # GET /operas/new
