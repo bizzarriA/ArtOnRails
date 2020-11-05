@@ -1,0 +1,17 @@
+<%=image_tag(@opera.url.url, height: 390) %>
+<h3><%= @opera.titolo %></h3>
+<div> <%= @opera.tecnica %>, <%= @opera.anno %>, <%= link_to (@artista.nome + ' ' +@artista.cognome), users_path(id: @artista.id)  %></div>
+<%if @opera.merchandising %>
+  <div>Per quest'opera è attivo il merchandising, <br/> contatta l'artista per maggiori informazioni!<br/>
+    email artista: <%= @artista.email %></div>
+<%end %>
+<%if @aggiunto%>
+  <div> Hai già acquistato questa opera!</div>
+<%else %>
+  <%= form_for @preferito, html: {class: "pure-form"} do |form| %>
+    <%= form.hidden_field :opera_id, :value => @opera.id%>
+    <div class="col-12 col-12-narrower">
+      <%= form.submit "Aggiungi ai Preferiti!" %>
+    </div>
+  <%end %>
+<%end %>

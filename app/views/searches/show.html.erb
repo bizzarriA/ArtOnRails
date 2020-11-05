@@ -15,6 +15,7 @@
             <%= link_to 'Modifica', edit_opera_path(opera.id), class: "button"%>
           <% else %>
             <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
+            <%= link_to 'Aggiungi Preferiti', new_favorites_path(opera_id: opera.id), class: "button"%>
           <% end %>
           </article>
         <%else %>

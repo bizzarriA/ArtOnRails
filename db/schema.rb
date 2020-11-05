@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_26_093301) do
+ActiveRecord::Schema.define(version: 2020_11_05_193915) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,6 +30,15 @@ ActiveRecord::Schema.define(version: 2020_10_26_093301) do
   create_table "artista", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "favorites", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "user_id"
+    t.bigint "opera_id"
+    t.index ["opera_id"], name: "index_favorites_on_opera_id"
+    t.index ["user_id"], name: "index_favorites_on_user_id"
   end
 
   create_table "operas", force: :cascade do |t|
@@ -54,6 +63,11 @@ ActiveRecord::Schema.define(version: 2020_10_26_093301) do
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_pagamentos_on_user_id"
+  end
+
+  create_table "preferiti", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "searches", force: :cascade do |t|
@@ -90,6 +104,8 @@ ActiveRecord::Schema.define(version: 2020_10_26_093301) do
   end
 
   add_foreign_key "acquistos", "operas"
+  add_foreign_key "favorites", "operas"
+  add_foreign_key "favorites", "users"
   add_foreign_key "operas", "artista", column: "artista_id"
   add_foreign_key "pagamentos", "users"
   add_foreign_key "users", "artista", column: "artista_id"

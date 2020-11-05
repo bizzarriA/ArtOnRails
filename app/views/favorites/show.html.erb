@@ -1,0 +1,33 @@
+<%if @opere == nil %>
+  <h1 class="titolo">
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    Non hai ancora nessun preferito! </br>
+    Cerca tra le opere quelle che più ti piacciono!
+  </h1>
+  <div class="titolo">
+    <div class="button">
+      <%= link_to "Cerca", new_searches_path %>
+    </div>
+  </div>
+
+<%else %>
+  <div id="main">
+    <%@opere.each do |opera| %>
+      <article class="thumb">
+        <%=link_to image_tag(opera.url.url), (opera.url.url),class: 'image' %>
+        <h2><%= opera.titolo %></h2>
+        <p> <%= opera.tecnica %>,<%= opera.anno %></p>
+        <%if current_user != nil %>
+          <%if current_user.artista_id != opera.artista_id %>
+            <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
+          <%end %>
+        <%end %>
+      </article>
+    <%end %>
+  </div>
+<%end %>
