@@ -5,9 +5,10 @@ class ArtistaController < ApplicationController
   # GET /artista/1
   # GET /artista/1.json
   def show
-
     @operas = Opera.where('artista_id=?', @artistum.id)
     @user = User.find_by_artista_id(@artistum.id)
+    @preferiti = Favorite.opere(current_user.id)
+
     render layout: "gallery"
   end
 

@@ -1,4 +1,0 @@
-class VendibilesController < ApplicationController
-
-
-end

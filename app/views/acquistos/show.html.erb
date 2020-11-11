@@ -5,12 +5,6 @@
   </div>
 <%else %>
   <div id="main">
-    <%@acquisti.each do |acquisto| %>
-      <article class="thumb">
-        <%=link_to image_tag(acquisto.url.url), (acquisto.url.url),class: 'image' %>
-        <h2><%= acquisto.titolo %></h2>
-        <p> <%= acquisto.tecnica %>,<%= acquisto.anno %></p>
-      </article>
-    <%end %>
+    <%= render 'operas/index', {favorites: @preferiti, opere: @acquisti}%>
   </div>
 <%end %>

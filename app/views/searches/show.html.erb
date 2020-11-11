@@ -5,22 +5,6 @@
   </div>
 <%else %>
   <div id="main">
-    <%@search.each do |opera| %>
-      <article class="thumb">
-        <%=link_to image_tag(opera.url.url), (opera.url.url),class: 'image' %>
-        <h2><%= opera.titolo %></h2>
-        <p> <%= opera.tecnica %>,<%= opera.anno %></p>
-        <%if current_user != nil
-            if current_user.artista_id == opera.artista_id %>
-            <%= link_to 'Modifica', edit_opera_path(opera.id), class: "button"%>
-          <% else %>
-            <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
-            <%= link_to 'Aggiungi Preferiti', new_favorites_path(opera_id: opera.id), class: "button"%>
-          <% end %>
-          </article>
-        <%else %>
-          <%= link_to 'Show', opera_path(opera.id), class: "button"%>
-      <%end %>
-    <%end %>
+    <%= render 'operas/index', {favorites: @preferiti, opere: @search}%>
   </div>
 <%end %>

@@ -4,6 +4,8 @@ class AcquistosController < ApplicationController
 
   def show
     @acquisti = Acquisto.opere(current_user.id)
+    @preferiti = Favorite.opere(current_user.id)
+
     render layout: "gallery"
   end
 

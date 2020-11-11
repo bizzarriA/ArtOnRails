@@ -6,16 +6,7 @@
   </div>
 <%else %>
   <div id="main">
-    <%@operas.each do |opera| %>
-      <article class="thumb">
-        <%=link_to image_tag(opera.url.url), (opera.url.url),class: 'image' %>
-        <h2><%= opera.titolo %></h2>
-        <p> <%= opera.tecnica %>,<%= opera.anno %></p>
-        <%if current_user.id == @user.id %>
-          <%= link_to 'Modifica', edit_opera_path(opera.id), class: "button"%>
-        <%end %>
-      </article>
-    <%end %>
+    <%= render 'operas/index', {opere: @operas, favorites: @preferiti}%>
     <article>
       <%if current_user.id == @user.id %>
         <%=link_to 'aggiungi nuova opera', new_opera_path, class: "button"%>

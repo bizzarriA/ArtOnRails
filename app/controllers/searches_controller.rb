@@ -24,6 +24,8 @@ class SearchesController < ApplicationController
   def show
     search = Search.find(params[:id])
     @search = Search.search(search)
+    @preferiti = Favorite.opere(current_user.id)
+
     render layout: "gallery"
   end
 
