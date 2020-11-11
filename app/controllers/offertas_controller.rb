@@ -1,0 +1,2 @@
+class OffertasController < ApplicationController
+end

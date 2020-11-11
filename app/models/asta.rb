@@ -1,0 +1,2 @@
+class Asta < ApplicationRecord
+end

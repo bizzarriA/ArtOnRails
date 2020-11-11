@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_05_193915) do
+ActiveRecord::Schema.define(version: 2020_11_11_113200) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,17 @@ ActiveRecord::Schema.define(version: 2020_11_05_193915) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "asta", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "opera_id"
+    t.datetime "inizio"
+    t.datetime "fine"
+    t.bigint "vincitore_id"
+    t.index ["opera_id"], name: "index_asta_on_opera_id"
+    t.index ["vincitore_id"], name: "index_asta_on_vincitore_id"
+  end
+
   create_table "favorites", force: :cascade do |t|
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -39,6 +50,16 @@ ActiveRecord::Schema.define(version: 2020_11_05_193915) do
     t.bigint "opera_id"
     t.index ["opera_id"], name: "index_favorites_on_opera_id"
     t.index ["user_id"], name: "index_favorites_on_user_id"
+  end
+
+  create_table "offerta", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.bigint "asta_id"
+    t.bigint "user_id"
+    t.float "importo"
+    t.index ["asta_id"], name: "index_offerta_on_asta_id"
+    t.index ["user_id"], name: "index_offerta_on_user_id"
   end
 
   create_table "operas", force: :cascade do |t|

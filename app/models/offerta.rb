@@ -1,0 +1,2 @@
+class Offerta < ApplicationRecord
+end

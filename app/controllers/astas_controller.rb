@@ -1,0 +1,2 @@
+class AstasController < ApplicationController
+end
