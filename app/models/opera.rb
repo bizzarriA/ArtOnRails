@@ -11,6 +11,11 @@ class Opera < ApplicationRecord
   has_many :acquistos, inverse_of: :opera, dependent: :destroy
   has_many :users, through: :acquistos
   has_many :vendibiles, inverse_of: :opera, dependent: :destroy
+  has_one :asta, dependent: :destroy
 
+
+  def self.find_by_artista(artista_id)
+    return Opera.where("artista_id = ?", artista_id)
+  end
 
 end

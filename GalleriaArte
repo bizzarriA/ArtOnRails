@@ -10,7 +10,7 @@ L'artista registrato potrà:
 
 Il compratore invece, potrà:
 - (FATTO - Opzione Merchandising) comprare le opere d'arte in tutti i formati messi a disposizione dall'artista
-- Possibilità di gestione dei preferiti
+- (FATTO) Possibilità di gestione dei preferiti
 - (FATTO) Visionare tutte le opere esposte con meccanismo di ricerca (per tipo, artista, stile ecc)
 (Eventuali aggiunte)
 - Accedere e gestire il proprio carrello 
@@ -22,7 +22,7 @@ L'utente curioso:
 (Eventuali aggiunte)
 -(FATTO) Visualizzare profilo artista
 
-In generale le immagini delle opere sposte dovranno avere un meccanismo che impedisca agli utenti di scaricarle senza pagare (soprattuto nel caso di disegni grafici). Ciò potrebbe avvenire tramite l'applicazione di stemmi o firme semitrasparenti nel centro dell'immagine.
+In generale le immagini delle opere esposte dovranno avere un meccanismo che impedisca agli utenti di scaricarle senza pagare (soprattuto nel caso di disegni grafici). Ciò potrebbe avvenire tramite l'applicazione di stemmi o firme semitrasparenti nel centro dell'immagine.
 
 
 TECNOLOGIE DA UTILIZZARE

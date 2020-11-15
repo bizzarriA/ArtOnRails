@@ -2,26 +2,29 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: {class: "row gtr-uniform"})do |f| %>
   <div >
-    <p class="col-12 col-12-narrower">
+    <div class="col-12 col-12-narrower">
       <%= render "users/shared/error_messages", resource: resource %>
-    </p>
-    <p class="col-12 col-12-narrower">
+    </div>
+    <div class="col-12 col-12-narrower">
       <%= f.text_field :nome, autofocus: true, placeholder: "nome"%>
-    </p>
-    <p class="col-12 col-12-narrower">
+    </div>
+    <div class="col-12 col-12-narrower">
       <%= f.text_field :cognome, autofocus: true, placeholder: "cognome"%>
-    </p>
-    <p class="col-12 col-12-narrower">
+    </div>
+    <div class="col-12 col-12-narrower">
       <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "email"%>
-    </p>
-    <p class="col-12 col-12-narrower">
+    </div>
+    <div class="col-12 col-12-narrower">
       <%= f.password_field :password, autocomplete: "new-password", placeholder: "password" %>
-    </p>
-    <p class="col-12 col-12-narrower">
+    </div>
+    <div class="col-12 col-12-narrower">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: "repeat password" %>
-    </p>
-    <p class="col-4 col-12-narrower">
+    </div>
+    <div class="col-12 col-12-narrower">
+      <%= f.text_field :dob, placeholder: "Data di Nascita", onfocus: "(this.type='date')", onblur: "(this.type='text')" %>
+    </div>
+    <div class="col-4 col-12-narrower">
       <%= f.submit "Registrati" %>
-    </p>
+    </div>
   </div>
 <% end %>

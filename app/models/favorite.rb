@@ -1,4 +1,9 @@
 class Favorite < ApplicationRecord
+  validates :opera_id, presence: true
+  validates :user_id, presence: true
+
+  has_one :opera
+  has_one :user
 
   def self.opere(id)
     prefe = Favorite.select('*').where('user_id = ?', id)

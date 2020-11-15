@@ -1,0 +1,25 @@
+<%= form_for @asta, :url => astas_path do |form| %>
+  <div class="col-12 col-12-narrow">
+    <strong>Seleziona Opera</strong>
+    <%= form.collection_select(:opera_id, @opere, :id, :titolo)%>
+  </div>
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Data di inizio" %>
+    <%= date_field_tag :data_inizio, :required => true %>
+  </div>
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Ora di inizio" %>
+    <%= time_field_tag :ora_inizio, :required => true %>
+  </div>
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Data di fine" %>
+    <%= date_field_tag :data_fine, :required => true %>
+  </div>
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Ora di fine" %>
+    <%= time_field_tag :ora_fine, :required => true %>
+  </div>
+  <div class="col-12 col-12-narrower">
+    <%= form.submit "Avvia Asta!" %>
+  </div>
+<%end %>

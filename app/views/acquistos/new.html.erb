@@ -14,7 +14,6 @@
       <strong>Metodo di pagamento</strong>
       <%= link_to ' ',new_pagamento_path, class: 'fas fa-plus'%>
       <%= form.collection_select :pagamento_id, @pay_methods, :id, :numero, {}, {required: true}%>
-
     </div>
     <div class="col-12 col-12-narrower">
       <%= form.submit "Acquista!" %>
