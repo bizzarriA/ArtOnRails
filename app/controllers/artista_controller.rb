@@ -1,5 +1,5 @@
 class ArtistaController < ApplicationController
-  before_action :set_artistum, only: [:show, :edit, :update, :destroy]
+  before_action :set_artistum, only: [:show, :edit, :update, :destroy, :aste]
 
 
   # GET /artista/1
@@ -10,6 +10,11 @@ class ArtistaController < ApplicationController
     @preferiti = Favorite.opere(current_user.id)
 
     render layout: "gallery"
+  end
+
+  def aste
+    @aste= Asta.find_by_artista(@artistum.id)
+    render layout: 'gallery'
   end
 
   # GET /artista/new

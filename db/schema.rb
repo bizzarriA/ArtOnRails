@@ -38,9 +38,9 @@ ActiveRecord::Schema.define(version: 2020_11_12_175620) do
     t.bigint "opera_id"
     t.datetime "inizio"
     t.datetime "fine"
-    t.bigint "vincitore_id"
+    t.bigint "users_id"
     t.index ["opera_id"], name: "index_asta_on_opera_id"
-    t.index ["vincitore_id"], name: "index_asta_on_vincitore_id"
+    t.index ["users_id"], name: "index_asta_on_users_id"
   end
 
   create_table "favorites", force: :cascade do |t|

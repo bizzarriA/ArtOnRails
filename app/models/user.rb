@@ -22,7 +22,7 @@ class User < ApplicationRecord
   has_many :pagamentos, inverse_of: :user, dependent: :destroy
   has_many :acquistos, inverse_of: :user, dependent: :destroy
   has_many :operas, through: :acquistos
-  has_many :astas, dependent: :destroy # vincitore
+  has_many :astas, inverse_of: :user # vincitore
   has_many :offertas, dependent: :destroy
 
 end

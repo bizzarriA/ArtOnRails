@@ -22,8 +22,13 @@
     <p>
       <%= link_to "i miei acquisti", acquistos_path%>
     </p>
+    <%if @user.artista_id != nil %>
+      <p>
+        <%= link_to "Le mie Aste!", artistum_aste_path(@user.artista_id)%>
+      </p>
+    <%end %>
     <p>
-      <%= link_to "Le mie Aste!", astas_path%>
+      <%= link_to "Le mie Offerte!", user_offerte_path%>
     </p>
     <p>
       <%= link_to "metodi di pagamento", pagamentos_path%>

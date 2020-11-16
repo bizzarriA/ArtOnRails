@@ -6,10 +6,11 @@ class AstasController < ApplicationController
   end
 
   def show
-    @aste_user = Asta.find_by_user(@user.id)
-    @aste_artista = Asta.find_by_artista(@user.artista_id)
+
 
   end
+
+
 
   def new
     @asta = Asta.new
@@ -20,7 +21,6 @@ class AstasController < ApplicationController
     @asta = Asta.new(asta_params)
     @asta.inizio = params[:data_inizio] + " " + params[:ora_inizio]
     @asta.fine = params[:data_fine] + " " + params[:ora_fine]
-    byebug
     respond_to do |format|
       if @asta.save
         format.html { redirect_to (session.delete(:return_to) || astas_path(@user)), notice: 'Asta was successfully created.'}

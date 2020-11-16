@@ -5,7 +5,7 @@ class Asta < ApplicationRecord
 
   belongs_to :opera
   has_many :offertas
-  # belongs_to :user
+  belongs_to :user, optional: true
 
   def self.find_by_user(user_id)
     offerte = Offerta.find_by_user_id(user_id)
@@ -19,12 +19,20 @@ class Asta < ApplicationRecord
     return aste
   end
 
+  def self.miglior_offerta(id)
+    offerta = Offerta.includes(:user).where("importo = (select MAX(importo) from offerta where asta_id = ?) AND asta_id=?", id, id).first
+    return offerta
+  end
+
   def self.find_by_artista(artista_id)
     opere = Opera.where("artista_id = ? ", artista_id)
     aste = []
     unless opere.nil?
       opere.each do |opera|
-        aste << Asta.find_by_opera_id(opera.id)
+        asta = Asta.includes(:opera).find_by_opera_id(opera.id)
+        if asta != nil
+          aste << asta
+        end
       end
     end
     return aste

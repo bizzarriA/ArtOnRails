@@ -1,0 +1,23 @@
+<h2>le mie offerte</h2>
+<table>
+  <th>
+  <td>Titolo Opera</td>
+  <td>Tecnica</td>
+  <td>Importo offerta</td>
+  <td>Miglio Offerta</td>
+  <td>Fine asta</td>
+  <td colspan="1"></td>
+  </th>
+  <%@offerte.each do |asta|%>
+    <tr>
+      <td> <%=image_tag(asta.opera.url.url, height: 50 )%></td>
+      <td> <%= asta.opera.titolo%></td>
+      <td> <%= asta.opera.tecnica %>,<%= asta.opera.anno %></td>
+      <td> <%= asta.importo %> €</td>
+      <td> <%= Asta.miglior_offerta(asta.asta_id).importo  %></td>
+      <td> <%= asta.fine.strftime("%d/%m/%y at %k:%M")  %></td>
+
+      <td class="fas fa-edit"></td>
+    </tr>
+  <% end %>
+</table>
