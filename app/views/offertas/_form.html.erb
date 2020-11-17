@@ -1,0 +1,20 @@
+<%= form_for offerta, :url => offertas_path(id: offerta.id) do |form| %>
+  <p id="notice"><%= notice %></p>
+
+<h2>Offerta</h2>
+  <div class="col-12 col-12-mobilep ">
+    <%= form.label "Importo" %>
+    <%= form.number_field :importo, :required => true %>
+  </div>
+<!--  <div class="col-12 col-12-mobilep ">-->
+    <%#= form.hidden_field :offerta_id, :value =>  @offerta.id %>
+<!--  </div>-->
+
+  <div class="col-12 col-12-narrower">
+    <%= form.submit "Fai Offerta!"%>
+    <%unless @offerta.id.nil? %>
+      <%= link_to 'Elimina', offertas_path(id: @offerta.id), :method => :delete, class: "button"%>
+    <%end %>
+  </div>
+
+<% end %>

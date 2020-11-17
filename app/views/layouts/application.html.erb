@@ -37,7 +37,7 @@
           <li><%= link_to "Opere", artistum_path(current_user.artista_id) %></li>
         <%end %>
         <%if user_signed_in? %>
-          <li><%= link_to "Preferiti", favorites_path %></li>
+          <li><%= link_to "Aste", astas_index_path %></li>
           <li><%= link_to "Profilo", users_path(id: current_user.id) %></li>
         <%else  %>
           <li><%= link_to "Log in", new_user_session_path %></li>

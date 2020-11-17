@@ -1,0 +1,9 @@
+<%if @offerta.nil? %>
+  <h2>Errore: nessun offerta trovata!</h2>
+<%else if @offerta.user_id == current_user.id%>
+    <%= render 'form', offerta: @offerta%>
+  <%else %>
+    <h2> Non hai fatto tu questa offerta, non puoi modificarla!</h2>
+  <%end %>
+<%end %>
+

@@ -13,7 +13,7 @@ Rails.application.routes.draw do
   resource :searches
   resource :acquistos
   resource :astas
-  get '/astas/index', to:'astas#index', as: 'astas_index'
+  get '/astas/index', to: 'astas#index', as: 'astas_index'
   resource :offertas
   resource :favorites, only: [:new, :show]
   get '/favorites/delete', to: 'favorites#destroy', as: 'del_favorites'
