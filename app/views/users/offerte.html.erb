@@ -1,13 +1,14 @@
 <h2>le mie offerte</h2>
 <table>
-  <th>
-  <td>Titolo Opera</td>
-  <td>Tecnica</td>
-  <td>Importo offerta</td>
-  <td>Miglio Offerta</td>
-  <td>Fine asta</td>
-  <td colspan="1"></td>
-  </th>
+  <tr>
+    <th colspan="1"></th>
+    <th>Titolo Opera</th>
+    <th>Tecnica</th>
+    <th>Importo offerta</th>
+    <th>Miglio Offerta</th>
+    <th>Fine asta</th>
+    <th colspan="1"></th>
+  </tr>
   <%@offerte.each do |asta|%>
     <tr>
       <td> <%=image_tag(asta.opera.url.url, height: 50 )%></td>

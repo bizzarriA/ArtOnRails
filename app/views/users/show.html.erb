@@ -20,31 +20,23 @@
   </div>
   <% if current_user != nil && current_user.id == @user.id %>
     <div>
-      <%= link_to "i miei acquisti", acquistos_path%>
-    </div>
-    <%if @user.artista_id != nil %>
-      <div>
-        <%= link_to "Le mie Aste!", artistum_aste_path(@user.artista_id)%>
-      </div>
-    <%end %>
-    <div>
-      <%= link_to "Le mie Offerte!", user_offerte_path%>
+      | <%= link_to "Acquisti", acquistos_path%>
+      | <%= link_to "Preferiti", favorites_path%> |
     </div>
     <div>
-      <%= link_to "metodi di pagamento", pagamentos_path%>
+      <%if @user.artista_id != nil %>
+        | <%= link_to 'Portfolio', artistum_path(@user.artista_id) %>
+        | <%= link_to "Aste", artistum_aste_path(@user.artista_id)%>
+      <%end %>
+      | <%= link_to "Offerte", user_offerte_path%> |
+    </div>
+    <div>
+      | <%= link_to "Metodi di pagamento", pagamentos_path%> |
+      <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+      <%= link_to 'Esci', user_sign_out_path %> |
     </div>
   <%end %>
 </div>
 
-|
-<%if @user.artista_id != nil %>
-  <%= link_to 'Portfolio', artistum_path(@user.artista_id) %> |
-<%end %>
-<% if current_user != nil %>
-  <% if current_user.id == @user.id %>
-    <%= link_to 'Edit', edit_user_registration_path(@user) %> |
-    <%= link_to 'Esci', user_sign_out_path %>
-  <%end %>
-<%end %>
-|
+
 

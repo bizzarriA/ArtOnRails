@@ -7,11 +7,11 @@ class AstasController < ApplicationController
   end
 
   def show
-
-
+    @asta = Asta.includes(:opera).find(params[:id])
+    @offerte = Offerta.where("asta_id = ?", @asta.id)
+    @user = User.find_by_opera(@asta.opera_id)
+    # byebug
   end
-
-
 
   def new
     @asta = Asta.new
@@ -33,6 +33,13 @@ class AstasController < ApplicationController
     end
   end
 
+  def edit
+
+  end
+
+  def update
+
+  end
   private
   def set_user
     @user = User.find(current_user.id)

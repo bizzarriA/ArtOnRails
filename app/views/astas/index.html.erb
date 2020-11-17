@@ -2,7 +2,7 @@
   <%@aste.each do |asta| %>
     <article class="thumb">
       <%=link_to image_tag(asta.opera.url.url), (asta.opera.url.url),class: 'image' %>
-      <h2><%= asta.opera.titolo %></h2>
+      <h2><%= link_to asta.opera.titolo, astas_path(id: asta.id) %></h2>
       <div> <%= asta.opera.tecnica %>,<%= asta.opera.anno %></div>
       <div><%= asta.inizio.strftime("Inizio: %d/%m/%y at %k:%M") %>, <%= asta.fine.strftime("Fine: %d/%m/%y at %k:%M")  %></div>
       <%offerta = Asta.miglior_offerta(asta.id)%>

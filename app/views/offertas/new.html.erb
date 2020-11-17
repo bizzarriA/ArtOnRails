@@ -1,2 +1,10 @@
+<%if @fatta%>
+  <h3>Hai già fatto un offerta per quest'opera</h3>
+  <h3><%= link_to "Vedi le tue offerte!", user_offerte_path %></h3>
+<%elsif @mia%>
+  <h3>Non puoi fare un'offerta, l'opera è tua!</h3>
+  <h3><%= link_to "Vedi le tue opere!", artistum_path(current_user.artista_id) %></h3>
 
-<%= render 'form', offerta: @offerta%>
+<%else %>
+  <%= render 'form', offerta: @offerta%>
+<%end %>

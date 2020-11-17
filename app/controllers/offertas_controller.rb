@@ -2,8 +2,15 @@ class OffertasController < ApplicationController
   before_action :set_asta, only: [:new]
   # before_action :set_offerta, only: [:update]
   def new
-    @offerta = Offerta.new
+    if Offerta.where("user_id = ? AND asta_id = ?", current_user.id, params[:asta_id]).empty?
+      @fatta = true
+      @offerta = Offerta.new
+    else if @asta.opera.artista_id == current_user.artista_id
+           @mia = true
+         end
+    end
     @asta = Asta.find(params[:asta_id])
+
   end
 
   def create
@@ -28,10 +35,9 @@ class OffertasController < ApplicationController
   # PATCH/PUT /operas/1.json
   def update
     @offerta = Offerta.find(params[:id])
-    importo = Float(offerta_params["importo"])
     importo_min = Asta.miglior_offerta(@offerta.asta_id).importo
     respond_to do |format|
-      if importo_min < importo and @offerta.update(offerta_params)
+      if @offerta.update(offerta_params)
         format.html { redirect_to user_offerte_path, notice: 'Opera was successfully updated.' }
         format.json { render :show, status: :ok, location: @offerta }
       else
@@ -53,7 +59,7 @@ class OffertasController < ApplicationController
 
   private
   def set_asta
-    @asta = Asta.find(params[:asta_id])
+    @asta = Asta.includes(:opera).find(params[:asta_id])
   end
   def set_offerta
     @offerta = Offerta.find(params[:offerta_id])

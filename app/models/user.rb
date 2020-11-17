@@ -25,4 +25,10 @@ class User < ApplicationRecord
   has_many :astas, inverse_of: :user # vincitore
   has_many :offertas, dependent: :destroy
 
+  def self.find_by_opera(id)
+    user = User.joins('INNER JOIN artista ON users.artista_id = artista.id').
+        joins('INNER JOIN operas ON operas.artista_id = artista.id').where("operas.id = ?", id).first
+    return user
+  end
+
 end

@@ -1,0 +1,26 @@
+<% if @asta.nil? %>
+  <h2>Ooops qualcosa è andato storto!</h2>
+<% else  %>
+  <div>
+    <%=image_tag(@asta.opera.url.url, height: 250) %>
+  </div>
+  <h3>
+    <%=@asta.opera.titolo %>
+  </h3>
+  <table class="col-12 col-12-narrower">
+    <tr>
+      <th>Utente</th>
+      <th>Importo</th>
+    </tr>
+    <%@offerte.each do |offerta|
+      user = User.find(offerta.user_id)%>
+      <tr>
+        <td> <%=link_to user.nome + " " + user.cognome, users_path(user.id) %></td>
+        <td> <%=offerta.importo %></td>
+      </tr>
+    <%end %>
+  </table>
+  <%if @user.id == current_user.id %>
+    <div><%=link_to "Modifica", edit_astas_path(@asta.id) %></div>
+  <%end %>
+<% end %>
