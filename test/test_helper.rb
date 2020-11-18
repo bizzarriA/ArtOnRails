@@ -4,7 +4,13 @@ require 'rails/test_help'
 
 class ActiveSupport::TestCase
   # Run tests in parallel with specified workers
-  parallelize(workers: :number_of_processors, with: :threads)
+  parallelize(workers: :number_of_processors)
+
+  include Devise::Test::IntegrationHelpers
+
+  set_fixture_class :asta => Asta
+  set_fixture_class :offerta => Offerta
+
 
   # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
   fixtures :all

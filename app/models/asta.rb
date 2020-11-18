@@ -18,17 +18,18 @@ class Asta < ApplicationRecord
   has_many :offertas
   belongs_to :user, optional: true
 
-  def self.find_by_user(user_id)
-    offerte = Offerta.find_by_user_id(user_id)
-    aste = []
-    unless offerte.nil?
-      offerte.each do |offerta|
-        aste << Asta.find(offerta.asta_id)
-      end
-    end
-
-    return aste
-  end
+  # OBSOLETA
+  # def self.find_by_user(user_id)
+  #   offerte = Offerta.find_by_user_id(user_id)
+  #   aste = []
+  #   unless offerte.nil?
+  #     offerte.each do |offerta|
+  #       aste << Asta.find(offerta.asta_id)
+  #     end
+  #   end
+  #
+  #   return aste
+  # end
 
   def self.miglior_offerta(id)
     offerta = Offerta.includes(:user).where("importo = (select MAX(importo) from offerta where asta_id = ?) AND asta_id=?", id, id).first

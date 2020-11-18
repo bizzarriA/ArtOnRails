@@ -4,8 +4,34 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
-# column: value
-#
-two: {}
-# column: value
+one:
+  id: 1
+  nome: Nome
+  cognome: Cognome
+  artista_id: 1
+  email: MyStringOne
+  encrypted_password: MyString
+  confirmed_at: 2020-11-14 16:23:52
+  confirmation_sent_at: 2020-11-14 16:23:53
+  dob: 1996-02-14
+
+two:
+  id: 2
+  nome: Nome
+  cognome: Cognome
+  artista_id: 2
+  email: MyStringTwo
+  encrypted_password: MyString
+  confirmed_at: 2020-11-14 16:23:52
+  confirmation_sent_at: 2020-11-14 16:23:53
+  dob: 1996-02-14
+
+only_compratore:
+  id: 3
+  nome: Nome
+  cognome: Cognome
+  email: MyStringCompratore
+  encrypted_password: MyString
+  confirmed_at: 2020-11-14 16:23:52
+  confirmation_sent_at: 2020-11-14 16:23:53
+  dob: 1996-02-14

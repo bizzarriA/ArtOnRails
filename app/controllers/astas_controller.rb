@@ -2,7 +2,7 @@ class AstasController < ApplicationController
   before_action :set_user
 
   def index
-    @aste = Asta.all
+    @aste = Asta.where("fine > ?", Time.now)
     render layout: "gallery"
   end
 
