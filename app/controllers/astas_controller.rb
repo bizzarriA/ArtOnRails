@@ -16,6 +16,7 @@ class AstasController < ApplicationController
   def new
     @asta = Asta.new
     @opere = Opera.find_by_artista(@user.artista_id)
+    @edit = false
   end
 
   def create
@@ -34,11 +35,21 @@ class AstasController < ApplicationController
   end
 
   def edit
-
+    @asta = Asta.includes(:opera).find(params[:id])
+    @edit = true
   end
 
   def update
-
+    @asta = Asta.find(params[:id])
+    respond_to do |format|
+      if @asta.update(asta_params)
+        format.html { redirect_to astas_path, notice: 'Opera was successfully updated.' }
+        format.json { render :show, status: :ok, location: @asta }
+      else
+        format.html { redirect_to astas_path(id: @asta.id), notice: "Errore"}
+        format.json { render json: @asta.errors, status: :unprocessable_entity }
+      end
+    end
   end
   private
   def set_user

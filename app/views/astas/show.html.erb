@@ -21,6 +21,6 @@
     <%end %>
   </table>
   <%if @user.id == current_user.id %>
-    <div><%=link_to "Modifica", edit_astas_path(@asta.id) %></div>
+    <div><%=link_to "Modifica", edit_astas_path(id: @asta.id) %></div>
   <%end %>
 <% end %>

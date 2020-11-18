@@ -1,0 +1,28 @@
+<%= form_for asta, :url => astas_path(id: asta.id) do |form| %>
+  <div class="col-12 col-12-narrow">
+    <%if @edit %>
+      <%#= form.collection_select(:opera_id, asta.opera, :id, :titolo)%>
+      <h2><%= asta.opera.titolo %></h2>
+    <%else %>
+      <strong>Seleziona Opera</strong>
+      <%= form.collection_select(:opera_id, @opere, :id, :titolo)%>
+    <%end %>
+  </div>
+  <div class="col-12 col-12-mobilep">
+    <strong>Inizio</strong>
+    <%= date_field_tag :data_inizio, value = asta.inizio.strftime("%Y-%m-%d"), :required => true %>
+    <%= time_field_tag :ora_inizio, value = asta.inizio.strftime("%H:%M"), :required => true %>
+  </div>
+  <div class="col-12 col-12-mobilep">
+    <strong>Fine</strong>
+    <%= date_field_tag :data_fine, value = asta.fine.strftime("%Y-%m-%d"), :required => true %>
+    <%= time_field_tag :ora_fine,  value = asta.fine.strftime("%H:%M"), :required => true %>
+  </div>
+  <div class="col-12 col-12-narrower">
+    <%if @edit %>
+      <%= form.submit "Modifica Asta!" %>
+  <%else %>
+      <%= form.submit "Avvia Asta!" %>
+    <%end %>
+  </div>
+<%end %>

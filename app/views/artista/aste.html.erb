@@ -15,5 +15,9 @@
         <div>Importo miglior offerta: <%= offerta.importo %> € di <%=link_to offerta.user.cognome, users_path(id: offerta.user_id)%></div>
       </article>
     <%end %>
+    <article>
+      <%= link_to "Crea un'asta!", new_astas_path %>
+    </article>
+
   </div>
 <%end %>

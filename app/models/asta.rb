@@ -1,8 +1,19 @@
+class AstaValidator < ActiveModel::Validator
+  def validate(record)
+    if record.inizio < Time.now
+      record.errors[:error] << ": L'inizio dell'asta non può essere antecedente ad oggi!"
+    end
+    if record.inizio < record.fine
+      record.errors[:error] << ": La fine dell'asta non può essere antecedente all'inizio!"
+    end
+  end
+end
 class Asta < ApplicationRecord
   validates :inizio, presence: true
   validates :fine, presence: true
   validates :opera_id, presence: true
 
+  validates_with AstaValidator
   belongs_to :opera
   has_many :offertas
   belongs_to :user, optional: true

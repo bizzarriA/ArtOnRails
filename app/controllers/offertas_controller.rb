@@ -31,8 +31,6 @@ class OffertasController < ApplicationController
     @asta = Asta.find(params[:id])
   end
 
-  # PATCH/PUT /operas/1
-  # PATCH/PUT /operas/1.json
   def update
     @offerta = Offerta.find(params[:id])
     importo_min = Asta.miglior_offerta(@offerta.asta_id).importo
@@ -47,8 +45,6 @@ class OffertasController < ApplicationController
     end
   end
 
-  # DELETE /operas/1
-  # DELETE /operas/1.json
   def destroy
     @offerta.destroy
     respond_to do |format|
