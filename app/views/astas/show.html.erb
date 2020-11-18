@@ -21,6 +21,12 @@
     <%end %>
   </table>
   <%if @user.id == current_user.id %>
-    <div><%=link_to "Modifica", edit_astas_path(id: @asta.id) %></div>
+    <%if @asta.fine > Time.now %>
+      <div><%=link_to "Modifica", edit_astas_path(id: @asta.id) %></div>
+    <%else %>
+      <div><%=link_to "Proclama vincitore!", win_astas_path(id: @asta.id) %></div>
+    <%end %>
+  <%else %>
+    <div><%=link_to "Fai offerta", new_offertas_path(asta_id: @asta.id) %></div>
   <%end %>
 <% end %>

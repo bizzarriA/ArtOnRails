@@ -1,0 +1,17 @@
+<%if @artista.id == current_user.id %>
+  <%if @ok %>
+    <div>Contatta il vincitore!</div>
+    <div><%=@vincitore.email %></div>
+  <%else %>
+    <h2>Oooops qualcosa è andato storto!</h2>
+    <h3>Contatta gli amministratori</h3>
+  <%end %>
+<%else %>
+  <%if @vincitore.id == current_user.id %>
+    <div>Hai vinto!</div><div>Contatta l'artista!</div>
+    <div><%=@artista.email %></div>
+  <%else %>
+    <div>Mi dispiace ma non hai vinto quest'asta!</div>
+    <div><%=link_to "Torna alla home", root_path%></div>
+  <%end %>
+<%end %>

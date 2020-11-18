@@ -6,6 +6,17 @@ class AstasController < ApplicationController
     render layout: "gallery"
   end
 
+  def win
+    @asta = Asta.find(params[:id])
+    @artista = User.find_by_opera(@asta.opera_id)
+    @vincitore = User.find(Asta.miglior_offerta(@asta.id).user_id)
+    if @asta.update_attribute(:users_id, @vincitore.id)
+      @ok = true
+    else
+      @ok = false
+    end
+  end
+
   def show
     @asta = Asta.includes(:opera).find(params[:id])
     @offerte = Offerta.where("asta_id = ?", @asta.id)

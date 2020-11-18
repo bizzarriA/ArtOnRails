@@ -2,14 +2,15 @@ class OffertasController < ApplicationController
   before_action :set_asta, only: [:new]
   # before_action :set_offerta, only: [:update]
   def new
+    @fatta = true
     if Offerta.where("user_id = ? AND asta_id = ?", current_user.id, params[:asta_id]).empty?
-      @fatta = true
+      @fatta = false
       @offerta = Offerta.new
-    else if @asta.opera.artista_id == current_user.artista_id
-           @mia = true
-         end
+    elsif @asta.opera.artista_id == current_user.artista_id
+      @mia = true
     end
     @asta = Asta.find(params[:asta_id])
+    @minimo = Asta.miglior_offerta(@asta.id)
 
   end
 
