@@ -4,13 +4,12 @@ class Opera < ApplicationRecord
   validates :artista_id, presence: true
   mount_uploader :url, AvatarUploader
 
-  TECNICHE = ['Acrilico', 'Acquarello', 'Fotografia', 'Grafica', 'Incisione', 'Matita', 'Olio', 'Penna', 'Pennino',
-              'Serigrafia', 'Scultura', 'Street', 'Altro']
+  TECNICHE = ['Acrilico', 'Acquarello', 'Fotografia', 'Grafica', 'Incisione', 'Matita', 'Olio su tela', 'Penna', 'Pennino',
+              'Serigrafia', 'Scultura', 'Street', 'Tecnica Mista', 'Altro']
 
   has_one :artistum
   has_many :acquistos, inverse_of: :opera, dependent: :destroy
   has_many :users, through: :acquistos
-  has_many :vendibiles, inverse_of: :opera, dependent: :destroy
   has_one :asta, dependent: :destroy
 
 

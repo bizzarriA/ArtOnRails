@@ -1,5 +1,6 @@
 <h2>le mie offerte</h2>
 <%if @offerte.empty? %>
+
   <h3>Non hai ancora fatto nessun offerta!</h3>
   <h3><%=link_to "Vai alle aste", astas_index_path %></h3>
 <%else %>
@@ -16,18 +17,18 @@
     <%@offerte.each do |asta|%>
       <tr>
         <td> <%=image_tag(asta.opera.url.url, height: 50 )%></td>
-        <td> <%= asta.opera.titolo%></td>
+        <td> <%=link_to asta.opera.titolo, astas_path(id: asta.id)%></td>
         <td> <%= asta.opera.tecnica %>,<%= asta.opera.anno %></td>
         <td> <%= asta.importo %> €</td>
         <td> <%= Asta.miglior_offerta(asta.asta_id).importo  %></td>
         <td> <%= asta.fine.strftime("%d/%m/%y at %k:%M")  %></td>
         <%if asta.fine < Time.now %>
-          <%if Asta.miglior_offerta(asta.asta_id).vincitore == current_user.id %>
+          <%if Asta.miglior_offerta(asta.asta_id).user_id == current_user.id %>
             <td><%link_to "Hai vinto!", win_astas_path(asta.id) %></td>
           <%else %>
           <%end %>
         <%else %>
-          <td><%= link_to '', edit_offertas_path(id: asta.id), class: "fa fa-edit" %></td>
+          <td><%= link_to '', edit_offertas_path(asta_id: asta.id), class: "fa fa-edit" %></td>
         <%end %>
       </tr>
     <% end %>

@@ -7,8 +7,11 @@ class ArtistaController < ApplicationController
   def show
     @operas = Opera.where('artista_id=?', @artistum.id)
     @user = User.find_by_artista_id(@artistum.id)
-    @preferiti = Favorite.opere(current_user.id)
-
+    if current_user.nil?
+      @preferiti = []
+    else
+      @preferiti = Favorite.opere(current_user.id)
+    end
     render layout: "gallery"
   end
 
@@ -34,7 +37,7 @@ class ArtistaController < ApplicationController
 
     respond_to do |format|
       if @artistum.save
-        current_user.update_attributes(artista_id: @artistum.id)
+        current_user.update(artista_id: @artistum.id)
         format.html { redirect_to @artistum, notice: 'Artistum was successfully created.' }
         format.json { render :show, status: :created, location: @artistum }
       else

@@ -3,11 +3,7 @@ class OperasController < ApplicationController
 
   # layout "gallery"
 
-  # GET /operas
-  # GET /operas.json
-  def index
 
-  end
 
   # GET /operas/1
   # GET /operas/1.json
@@ -31,12 +27,13 @@ class OperasController < ApplicationController
   def create
     @opera = Opera.new(opera_params)
     @opera.artista_id = current_user.artista_id
+
     respond_to do |format|
       if @opera.save
-        format.html { redirect_to artistum_path(@opera.artista_id), notice: 'Opera was successfully created.' }
+        format.html { redirect_to opera_path(@opera.id), notice: 'Opera was successfully created.' }
         format.json { render :show, status: :created, location: @opera }
       else
-        format.html { render :new }
+        format.html { redirect_to new_opera_path }
         format.json { render json: @opera.errors, status: :unprocessable_entity }
       end
     end
@@ -78,7 +75,4 @@ class OperasController < ApplicationController
     params.require(:opera).permit(:titolo, :tecnica, :anno, :url, :merchandising)
   end
 
-  def search_params
-    params.permit(:titolo, :tecnica, :anno, :artista)
-  end
 end

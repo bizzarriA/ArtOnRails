@@ -21,15 +21,16 @@ class OffertasController < ApplicationController
         format.html { redirect_to user_offerte_path, notice: 'Offerta was successfully created.'}
         format.json { render :show, status: :created, location: @offerta }
       else
-        format.html { redirect_to new_offertas_path(asta_id: @offerta.asta_id), notice: 'Messagge error'}
+        format.html { redirect_to new_offertas_path(asta_id: @offerta.asta_id), notice: 'Errore creazione offerta'}
         format.json { render json: @offerta.errors, status: :unprocessable_entity }
       end
     end
   end
 
   def edit
-    @offerta = Offerta.includes(:user).find_by_asta_id(params[:id])
-    @asta = Asta.find(params[:id])
+    @offerta = Offerta.find_my_offert(params[:asta_id], current_user.id)
+    @asta = Asta.find(params[:asta_id])
+    @minimo = Asta.miglior_offerta(@asta.id)
   end
 
   def update
@@ -62,6 +63,6 @@ class OffertasController < ApplicationController
     @offerta = Offerta.find(params[:offerta_id])
   end
   def offerta_params
-    params.require(:offerta).permit(:importo)
+    params.require(:offerta).permit(:importo, :asta_id, :user_id)
   end
 end

@@ -24,8 +24,12 @@ class SearchesController < ApplicationController
   def show
     search = Search.find(params[:id])
     @search = Search.search(search)
-    @preferiti = Favorite.opere(current_user.id)
-
+    # @search.shuffle
+    if current_user.nil?
+      @preferiti = []
+    else
+      @preferiti = Favorite.opere(current_user.id)
+    end
     render layout: "gallery"
   end
 

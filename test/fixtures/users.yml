@@ -6,7 +6,7 @@
 #
 one:
   id: 1
-  nome: Nome
+  nome: NomeRicerca
   cognome: Cognome
   artista_id: 1
   email: MyStringOne
@@ -31,6 +31,17 @@ only_compratore:
   nome: Nome
   cognome: Cognome
   email: MyStringCompratore
+  encrypted_password: MyString
+  confirmed_at: 2020-11-14 16:23:52
+  confirmation_sent_at: 2020-11-14 16:23:53
+  dob: 1996-02-14
+
+current_user:
+  id: 4
+  nome: Nome
+  cognome: Cognome
+  artista_id: 3
+  email: EmailCurrentUser
   encrypted_password: MyString
   confirmed_at: 2020-11-14 16:23:52
   confirmation_sent_at: 2020-11-14 16:23:53

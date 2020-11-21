@@ -1,13 +1,10 @@
+<div class="titolo">
+  <%= notice %>
+</div>
 <%if @aste.empty? %>
-  <h1 class="titolo">
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
-    <br/>
+  <h2 id="banner">
     ci spiace ma al momento non ci sono Aste Attive!
-  </h1>
+  </h2>>
 <%else %>
   <div id="main">
 
@@ -18,7 +15,11 @@
         <div> <%= asta.opera.tecnica %>,<%= asta.opera.anno %></div>
         <div><%= asta.inizio.strftime("Inizio: %d/%m/%y at %k:%M") %>, <%= asta.fine.strftime("Fine: %d/%m/%y at %k:%M")  %></div>
         <%offerta = Asta.miglior_offerta(asta.id)%>
-        <div>Importo miglior offerta: <%= offerta.importo %> € di <%=link_to offerta.user.cognome, users_path(id: offerta.user_id)%></div>
+        <%if offerta == nil %>
+          <div> Ancoda nessuna offerta</div>
+        <%else %>
+          <div>Importo miglior offerta: <%= offerta.importo %> € di <%=link_to offerta.user.cognome, users_path(id: offerta.user_id)%></div>
+        <%end %>
       </article>
     <%end %>
   </div>

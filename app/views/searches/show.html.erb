@@ -1,8 +1,8 @@
 
-<%if @search == nil %>
-  <div id="banner">
-    <h2>Nessuna opera rispetta i tuoi parametri di ricerca!</h2>
-  </div>
+<%if @search.empty? %>
+  <h2 id="banner">
+      Nessuna opera rispetta i tuoi parametri di ricerca!
+  </h2>
 <%else %>
   <div id="main">
     <%= render 'operas/index', {favorites: @preferiti, opere: @search}%>

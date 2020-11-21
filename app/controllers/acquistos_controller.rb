@@ -1,11 +1,14 @@
 class AcquistosController < ApplicationController
 
-  before_action :set_opera, only: [:new, :create]
+  before_action :set_opera, only: [:new]
 
   def show
     @acquisti = Acquisto.opere(current_user.id)
-    @preferiti = Favorite.opere(current_user.id)
-
+    if current_user.nil?
+      @preferiti = []
+    else
+      @preferiti = Favorite.opere(current_user.id)
+    end
     render layout: "gallery"
   end
 
@@ -23,7 +26,7 @@ class AcquistosController < ApplicationController
 
   def create
     @acquisto = Acquisto.new(acquisto_params)
-    @acquisto.update_attributes(user_id: current_user.id)
+    @acquisto.update(user_id: current_user.id)
     respond_to do |format|
       if @acquisto.save
         format.html { redirect_to acquistos_path, notice: 'Acquisto was successfully created.' }

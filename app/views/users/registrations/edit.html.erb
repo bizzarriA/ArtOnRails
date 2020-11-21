@@ -3,23 +3,28 @@
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%#= render "devise/shared/error_messages", resource: resource %>
   <div>
-    <p class="col-12 col-12-narrower">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "Email"%>
-    </p>
-
-    <p class="col-12 col-12-narrower">
-<!--      <i>(leave blank if you don't want to change it)</i>-->
+<!--    <div class="col-12 col-12-narrower">-->
+      <%#= f.email_field :email, autofocus: true, placeholder: "email"%>
+<!--    </div>-->
+    <div class="col-12 col-12-narrower">
+      <%= f.text_field :nome, autofocus: true, placeholder: "nome"%>
+    </div>
+    <div class="col-12 col-12-narrower">
+      <%= f.text_field :cognome, autofocus: true, placeholder: "cognome"%>
+    </div>
+    <div class="col-12 col-12-narrower">
+      <i>(leave blank if you don't want to change it)</i>
       <%= f.password_field :password, autocomplete: "new-password", placeholder:"Nuova Password"%>
-    </p>
+    </div>
 
-    <p class="col-12 col-12-narrower">
+    <div class="col-12 col-12-narrower">
       <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder:"Conferma Password" %>
-    </p>
+    </div>
 
-    <p class="col-12 col-12-narrower">
-<!--      <i>(we need your current password to confirm your changes)</i>-->
+    <div class="col-12 col-12-narrower">
+      <i>(we need your current password to confirm your changes)</i>
       <%= f.password_field :current_password, autocomplete: "current-password", placeholder:"Password Attuale" %>
-    </p>
+    </div>
 
     <p class="actions">
       <%= f.submit "Update" %>

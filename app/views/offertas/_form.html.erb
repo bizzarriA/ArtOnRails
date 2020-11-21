@@ -3,9 +3,11 @@
 
 <h2>Offerta</h2>
   <div class="col-12 col-12-mobilep ">
-    <%= form.label "Importo" %> (minimo: <%=@minimo.importo %>)
+    <%= form.label "Importo" %> <%if @minimo != nil %> (minimo: <%=@minimo.importo %>) <%end %>
     <%= form.number_field :importo, :required => true %>
   </div>
+  <%= form.hidden_field :asta_id, value: @asta.id %>
+  <%= form.hidden_field :user_id, value: current_user.id %>
 
   <div class="col-12 col-12-narrower">
     <%= form.submit "Fai Offerta!"%>

@@ -32,14 +32,14 @@ class AstasController < ApplicationController
 
   def create
     @asta = Asta.new(asta_params)
-    @asta.inizio = params[:data_inizio] + " " + params[:ora_inizio]
-    @asta.fine = params[:data_fine] + " " + params[:ora_fine]
+    @asta.update(inizio: params[:data_inizio] + " " + params[:ora_inizio], fine: params[:data_fine] + " " + params[:ora_fine])
+    # byebug
     respond_to do |format|
       if @asta.save
-        format.html { redirect_to (session.delete(:return_to) || astas_path(@user)), notice: 'Asta was successfully created.'}
+        format.html { redirect_to artistum_aste_path(@user.artista_id), notice: 'Asta was successfully created.'}
         format.json { render :show, status: :created, location: @asta }
       else
-        format.html { render :index, notice: 'Messagge error'}
+        format.html { redirect_to astas_index_path, notice: 'Impossibile creare asta!'}
         format.json { render json: @asta.errors, status: :unprocessable_entity }
       end
     end

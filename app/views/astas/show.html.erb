@@ -15,7 +15,7 @@
     <%@offerte.each do |offerta|
       user = User.find(offerta.user_id)%>
       <tr>
-        <td> <%=link_to user.nome + " " + user.cognome, users_path(user.id) %></td>
+        <td> <%=link_to user.nome + " " + user.cognome, users_path(id: user.id) %></td>
         <td> <%=offerta.importo %></td>
       </tr>
     <%end %>

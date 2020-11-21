@@ -10,7 +10,7 @@ class FavoritesController < ApplicationController
   def new
     session[:return_to] ||= request.referer
     @preferito = Favorite.new
-    @preferito.update_attributes(opera_id: @opera.id, user_id: current_user.id)
+    @preferito.update(opera_id: @opera.id, user_id: current_user.id)
     # byebug
     respond_to do |format|
       if @preferito.save

@@ -3,7 +3,7 @@ class AstaValidator < ActiveModel::Validator
     if record.inizio < Time.now
       record.errors[:error] << ": L'inizio dell'asta non può essere antecedente ad oggi!"
     end
-    if record.inizio < record.fine
+    if record.inizio > record.fine
       record.errors[:error] << ": La fine dell'asta non può essere antecedente all'inizio!"
     end
   end

@@ -7,7 +7,7 @@ Rails.application.routes.draw do
   resource :users, only: [:show]
   get '/user/offerte', to: 'users#offerte', as: 'user_offerte'
   resources :pagamentos
-  resources :operas
+  resources :operas, only: [:show, :new, :edit, :create, :update, :destroy]
   resources :artista
   get '/artista/:id/aste', to: 'artista#aste', as: 'artistum_aste'
   resource :searches

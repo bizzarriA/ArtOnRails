@@ -4,3 +4,10 @@ one:
   mese: 02
   anno: 25
   user_id: 1
+
+two:
+  id: 2
+  numero: MyString
+  mese: 02
+  anno: 25
+  user_id: 4
