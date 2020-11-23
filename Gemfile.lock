@@ -113,6 +113,9 @@ GEM
     mini_mime (1.0.2)
     mini_portile2 (2.4.0)
     minitest (5.14.1)
+    minitest-rails (6.0.1)
+      minitest (~> 5.10)
+      railties (~> 6.0.0)
     msgpack (1.3.3)
     msgpack (1.3.3-x86-mingw32)
     nio4r (2.5.2)
@@ -228,6 +231,7 @@ DEPENDENCIES
   carrierwave
   devise
   jbuilder (~> 2.7)
+  minitest-rails (>= 6.0.0)
   pg
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.2)

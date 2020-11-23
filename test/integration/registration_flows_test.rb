@@ -19,7 +19,8 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
          params: { user: { email: 'email@test.it', password: 'pwdtest', password_confirmaton: 'pwdtest', username: 'test',
                          nome: 'nome', cognome: 'cognome', dob: '1996-08-21',  } }
     # Verifico che la mail di conferma venga effettivamente inviata
-    assert_emails 1
+    # decommentare se si attiva :confirmable
+    # assert_emails 1
     assert_response :redirect
     follow_redirect!
     assert_equal 200, status
