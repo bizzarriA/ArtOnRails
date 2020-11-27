@@ -1,3 +1,6 @@
+Art On Rails 
+
+
 ArtOnRails è una galleria d'arte online nella quale gli utenti possono vendere, comprare o semplicemente visionare le opere d’arte.
 L’applicativo nasce dalla richiesta di una cliente che aveva la necessità di creare un portfolio online per le proprie opere d'arte. Dato l’elevato numero di artisti che hanno la stessa necessità per acquisire visibilità abbiamo pensato di implementare una vera e propria galleria d’arte dove ogni artista può aggiungere le proprie opere e al tempo stesso creare un portfolio personale.
 
