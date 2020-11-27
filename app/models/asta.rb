@@ -15,7 +15,7 @@ class Asta < ApplicationRecord
 
   validates_with AstaValidator
   belongs_to :opera
-  has_many :offertas
+  has_many :offertas, dependent: :destroy
   belongs_to :user, optional: true
 
   # OBSOLETA

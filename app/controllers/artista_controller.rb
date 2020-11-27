@@ -1,5 +1,5 @@
 class ArtistaController < ApplicationController
-  before_action :set_artistum, only: [:show, :edit, :update, :destroy, :aste]
+  before_action :set_artistum, only: [:show, :aste]
 
 
   # GET /artista/1
@@ -26,10 +26,6 @@ class ArtistaController < ApplicationController
     render layout: "application"
   end
 
-  # GET /artista/1/edit
-  def edit
-  end
-
   # POST /artista
   # POST /artista.json
   def create
@@ -44,30 +40,6 @@ class ArtistaController < ApplicationController
         format.html { render :new }
         format.json { render json: @artistum.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /artista/1
-  # PATCH/PUT /artista/1.json
-  def update
-    respond_to do |format|
-      if @artistum.update(artistum_params)
-        format.html { redirect_to @artistum, notice: 'Artistum was successfully updated.' }
-        format.json { render :show, status: :ok, location: @artistum }
-      else
-        format.html { render :edit }
-        format.json { render json: @artistum.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /artista/1
-  # DELETE /artista/1.json
-  def destroy
-    @artistum.destroy
-    respond_to do |format|
-      format.html { redirect_to artista_url, notice: 'Artistum was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 

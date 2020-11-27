@@ -1,6 +1,6 @@
 <% if @asta.nil? %>
   <h2>Ooops qualcosa è andato storto!</h2>
-<% else  %>
+<% elsif @asta.users_id == nil  %>
   <div>
     <%=image_tag(@asta.opera.url.url, height: 250) %>
   </div>
@@ -29,4 +29,6 @@
   <%else %>
     <div><%=link_to "Fai offerta", new_offertas_path(asta_id: @asta.id) %></div>
   <%end %>
+<%else %>
+  <div>Hai già proclamato il vincitore, <%= link_to 'contattalo!', users_path(id:@asta.users_id)%> </div>
 <% end %>

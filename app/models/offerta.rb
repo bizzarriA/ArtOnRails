@@ -19,8 +19,8 @@ class Offerta < ApplicationRecord
 
   validates_with OffertaValidator
 
-  belongs_to :asta, dependent: :destroy
-  belongs_to :user, dependent: :destroy
+  belongs_to :asta
+  belongs_to :user
 
   def self.find_my_offert(asta_id, user_id)
     offerta = Offerta.includes(:user).where("asta_id = ? AND user_id = ?", asta_id, user_id)

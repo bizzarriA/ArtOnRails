@@ -11,15 +11,17 @@
         <div>
           <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
           <%unless favorites.empty? %>
-          <span class="button">
             <% if favorites.include?(opera)%>
+              <span class="button">
                 <%= link_to ' ', del_favorites_path(opera_id: opera.id), class: "fas fa-heart"%>
-            <%else %>
-              <%= link_to ' ', new_favorites_path(opera_id: opera.id), class: "far fa-heart"%>
+              </span>
             <%end %>
-          </span>
-
+          <%else %>
+            <span class="button">
+              <%= link_to ' ', new_favorites_path(opera_id: opera.id), class: "far fa-heart"%>
+            </span>
           <%end %>
+
         </div>
 
 

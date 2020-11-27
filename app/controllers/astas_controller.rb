@@ -47,6 +47,9 @@ class AstasController < ApplicationController
 
   def edit
     @asta = Asta.includes(:opera).find(params[:id])
+    if @asta.fine < Time.now
+      redirect_to astas_path(id: @asta.id), notice: "Non puoi modificarla, è scaduta, proclama un vincitore"
+    end
     @edit = true
   end
 

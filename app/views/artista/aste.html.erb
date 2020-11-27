@@ -2,14 +2,14 @@
   <h2 id="banner">
     NON HAI ANCORA NESSUNA ASTA!
     <br/>
-    <%= link_to "Crea un'asta!", new_astas_path%>
+    <%= link_to "Crea un asta!", new_astas_path%>
   </h2>
 <%else%>
   <div id="main">
     <%@aste.each do |asta| %>
       <article class="thumb">
         <%=link_to image_tag(asta.opera.url.url), (asta.opera.url.url),class: 'image' %>
-        <h2><%= asta.opera.titolo %> <%=link_to " ", edit_astas_path(id: asta.id), class: "fa fa-edit" %></h2>
+        <h2><%= link_to asta.opera.titolo, astas_path(id: asta.id) %> <%=link_to " ", edit_astas_path(id: asta.id), class: "fa fa-edit" %></h2>
         <div> <%= asta.opera.tecnica %>,<%= asta.opera.anno %></div>
         <div><%= asta.inizio.strftime("Inizio: %d/%m/%y at %k:%M") %>, <%= asta.fine.strftime("Fine: %d/%m/%y at %k:%M")  %></div>
         <%offerta = Asta.miglior_offerta(asta.id)%>
@@ -21,7 +21,7 @@
       </article>
     <%end %>
     <article>
-      <%= link_to "Crea un'asta!", new_astas_path %>
+      <%= link_to "Crea un asta!", new_astas_path %>
     </article>
 
   </div>

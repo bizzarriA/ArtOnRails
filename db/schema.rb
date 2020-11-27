@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_12_175620) do
+ActiveRecord::Schema.define(version: 2020_11_25_152126) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,6 +71,7 @@ ActiveRecord::Schema.define(version: 2020_11_12_175620) do
     t.bigint "artista_id"
     t.string "url"
     t.boolean "merchandising"
+    t.float "prezzo"
     t.index ["artista_id"], name: "index_operas_on_artista_id"
   end
 

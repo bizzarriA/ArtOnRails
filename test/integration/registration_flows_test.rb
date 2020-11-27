@@ -20,7 +20,7 @@ class RegistrationFlowsTest < ActionDispatch::IntegrationTest
                          nome: 'nome', cognome: 'cognome', dob: '1996-08-21',  } }
     # Verifico che la mail di conferma venga effettivamente inviata
     # decommentare se si attiva :confirmable
-    # assert_emails 1
+    assert_emails 1
     assert_response :redirect
     follow_redirect!
     assert_equal 200, status

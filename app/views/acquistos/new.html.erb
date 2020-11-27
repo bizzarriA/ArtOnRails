@@ -1,22 +1,36 @@
-<%=image_tag(@opera.url.url, height: 390) %>
+<div><%=image_tag(@opera.url.url, height: 390) %></div>
 <h3><%= @opera.titolo %></h3>
 <div> <%= @opera.tecnica %>, <%= @opera.anno %>, <%= link_to (@artista.nome + ' ' +@artista.cognome), users_path(id: @artista.id)  %></div>
 <%if @opera.merchandising %>
-  <div>Per quest'opera è attivo il merchandising, <br/> contatta l'artista per maggiori informazioni!<br/>
-    email artista: <%= @artista.email %></div>
+  <div>Per quest'opera è attivo il merchandising, </div>
+    <%=link_to "contatta l'artista per maggiori informazioni!", users_path(id: @user_artista.id)%>
 <%end %>
-<%if @acquistato%>
-  <div> Hai già acquistato questa opera!</div>
-<%else %>
-  <%= form_for @acquisto, html: {class: "pure-form"} do |form| %>
-    <%= form.hidden_field :opera_id, :value => @opera.id%>
-    <div class="col-12 col-12-narrow">
-      <strong>Metodo di pagamento</strong>
-      <%= link_to ' ',new_pagamento_path, class: 'fas fa-plus'%>
-      <%= form.collection_select :pagamento_id, @pay_methods, :id, :numero, {}, {required: true}%>
-    </div>
-    <div class="col-12 col-12-narrower">
-      <%= form.submit "Acquista!" %>
-    </div>
+<%if @has_asta %>
+  <div>Quest'opera è all'asta!
+    <%= link_to 'Vai alle aste', astas_index_path%>
+<%elsif @opera.prezzo == nil %>
+  <%if current_user.artista_id==@opera.artista_id %></div>
+    <div>Non hai inserito un prezzo!</div>
+    <%= link_to 'fallo ora', edit_opera_path(id: @opera.id) %>
+  <%else %>
+    <div>l'artista non ha aggiunto nessun prezzo,</div> <%=link_to 'contattalo per maggiori informazioni!', users_path(id: @user_artista.id)%>
+  <%end
+    else %>
+
+  <%if @acquistato%>
+    <div> Hai già acquistato questa opera!</div>
+  <%else %>
+    <div>Prezzo opera: <%= @opera.prezzo %> €</div>
+    <%= form_for @acquisto, html: {class: "pure-form"} do |form| %>
+      <%= form.hidden_field :opera_id, :value => @opera.id%>
+      <div class="col-12 col-12-narrow">
+        <strong>Metodo di pagamento</strong>
+        <%= link_to ' ',new_pagamento_path, class: 'fas fa-plus'%>
+        <%= form.collection_select :pagamento_id, @pay_methods, :id, :numero, {}, {required: true}%>
+      </div>
+      <div class="col-12 col-12-narrower">
+        <%= form.submit "Acquista!" %>
+      </div>
+    <%end %>
   <%end %>
 <%end %>

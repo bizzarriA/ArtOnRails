@@ -56,10 +56,20 @@ class OperasController < ApplicationController
   # DELETE /operas/1
   # DELETE /operas/1.json
   def destroy
-    @opera.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Opera was successfully destroyed.' }
-      format.json { head :no_content }
+    @asta = Asta.find_by_opera_id(@opera.id)
+    if @asta.nil?
+      @opera.destroy
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'Opera was successfully destroyed.' }
+        format.json { head :no_content }
+      end
+    else
+      if @asta.inizio < Time.now && @asta.fine > Time.now
+        respond_to do |format|
+          format.html { redirect_to opera_path(id:@opera.id), notice: 'Impossibile rimuovere opera, ha aste attive!' }
+          format.json { head :no_content }
+        end
+      end
     end
   end
 
@@ -72,7 +82,7 @@ class OperasController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def opera_params
-    params.require(:opera).permit(:titolo, :tecnica, :anno, :url, :merchandising)
+    params.require(:opera).permit(:titolo, :tecnica, :anno, :url, :merchandising, :prezzo)
   end
 
 end

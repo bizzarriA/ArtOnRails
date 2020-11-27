@@ -21,8 +21,11 @@
     <%= form.label "Anno" %>
     <%= form.number_field :anno, :required => true %>
   </div>
+  <div class="col-12 col-12-mobilep">
+    <%= form.label "Prezzo" %>
+    <%= form.number_field :prezzo, :required => true %>
+  </div>
   <div class="col-12 col-12-narrower">
-    <%= form.label :"Carica una foto" %>
     <%= form.file_field :url %>
   </div>
 
