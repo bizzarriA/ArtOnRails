@@ -1,4 +1,4 @@
-Art On Rails 
+# ArtOnRails
 
 
 ArtOnRails è una galleria d'arte online nella quale gli utenti possono vendere, comprare o semplicemente visionare le opere d’arte.
