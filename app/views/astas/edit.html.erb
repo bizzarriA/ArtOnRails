@@ -12,6 +12,9 @@
     <%= date_field_tag :data_fine, value = @asta.fine.strftime("%Y-%m-%d"), :required => true %>
     <%= time_field_tag :ora_fine,  value = @asta.fine.strftime("%H:%M"), :required => true %>
   </div>
+  <div>
+    <%= form.hidden_field :opera_id, value: @asta.opera.id %>
+  </div>
   <div class="col-12 col-12-narrower">
     <%= form.submit "Modifica Asta!" %>
   </div>

@@ -55,9 +55,10 @@ class AstasController < ApplicationController
 
   def update
     @asta = Asta.find(params[:id])
+    @asta.update(inizio: params[:data_inizio] + " " + params[:ora_inizio], fine: params[:data_fine] + " " + params[:ora_fine])
     respond_to do |format|
       if @asta.update(asta_params)
-        format.html { redirect_to astas_path, notice: 'Opera was successfully updated.' }
+        format.html { redirect_to  artistum_aste_path(current_user.artista_id), notice: 'Asta was successfully updated.' }
         format.json { render :show, status: :ok, location: @asta }
       else
         format.html { redirect_to astas_path(id: @asta.id), notice: "Errore"}
