@@ -6,14 +6,11 @@ class Search < ApplicationRecord
     operas = operas.where('operas.anno = ?', params.anno) unless params.anno.nil?
     operas = operas.where('operas.tecnica ILIKE ?', params.tecnica) unless params.tecnica == 'All'
     if params.artista == 'All'
-      operas
+      return operas
     else
-      result = []
-      artistas = Artistum.joins('INNER JOIN users ON users.artista_id = artista.id').where('users.nome ILIKE ?', params.artista)
-      for artista in artistas
-        result << operas.where('operas.artista_id = ?', artista.id)
-      end
-      result
+      artistas = Artistum.joins('INNER JOIN users ON users.artista_id = artista.id').where('users.nome ILIKE ? OR users.cognome ILIKE ?', params.artista, params.artista)
+      result = operas.where('operas.artista_id = ?', artistas.ids)
+      return result
     end
   end
 end

@@ -24,7 +24,6 @@ class SearchesController < ApplicationController
   def show
     search = Search.find(params[:id])
     @search = Search.search(search)
-    # @search.shuffle
     if current_user.nil?
       @preferiti = []
     else
