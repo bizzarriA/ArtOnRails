@@ -15,6 +15,10 @@
               <span class="button">
                 <%= link_to ' ', del_favorites_path(opera_id: opera.id), class: "fas fa-heart"%>
               </span>
+            <%else %>
+              <span class="button">
+                <%= link_to ' ', new_favorites_path(opera_id: opera.id), class: "far fa-heart"%>
+              </span>
             <%end %>
           <%else %>
             <span class="button">

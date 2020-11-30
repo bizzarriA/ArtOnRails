@@ -17,10 +17,10 @@
     <%@offerte.each do |asta|%>
       <tr>
         <td> <%=image_tag(asta.opera.url.url, height: 50 )%></td>
-        <td style="max-width: 7em"> <%=link_to asta.opera.titolo, astas_path(id: asta.id)%></td>
+        <td style="max-width: 7em"> <%=link_to asta.opera.titolo, astas_path(id: asta.asta_id)%></td>
         <td> <%= asta.opera.tecnica %>,<%= asta.opera.anno %></td>
         <td> <%= asta.importo %> €</td>
-        <td> <%= Asta.miglior_offerta(asta.asta_id).importo  %></td>
+        <td> <%= Asta.miglior_offerta(asta.asta_id).importo  %> €</td>
         <td> <%= asta.fine.strftime("%d/%m/%y at %k:%M")  %></td>
         <%if asta.fine < Time.now %>
           <%if Asta.miglior_offerta(asta.asta_id).user_id == current_user.id %>
