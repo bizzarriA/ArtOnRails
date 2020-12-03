@@ -34,7 +34,7 @@ class OperasController < ApplicationController
         format.json { render :show, status: :created, location: @opera }
       else
         format.html { redirect_to new_opera_path }
-        format.json { render json: @opera.errors, status: :unprocessable_entity }
+        format.json { render json: @opera.errors, notice: "Errore nella creazione dell'opera, assicurati di aver inserito correttamente tutti i campi e l'immagine!" }
       end
     end
   end
