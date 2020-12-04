@@ -1,4 +1,3 @@
-<h3><%= notice %></h3>
 <%=image_tag(@opera.url.url, height: 390) %>
 <h3><%= @opera.titolo %></h3>
 <div> <%= @opera.tecnica %>,<%= @opera.anno %>,<%= @artista.id %> <%= link_to (@artista.nome + ' ' +@artista.cognome), users_path(id: @artista.id)  %></div>

@@ -1,4 +1,3 @@
-<p id="notice"><%= notice %></p>
 <%if current_user != nil && current_user.id == @user.id%>
   <h2>Il Tuo Profilo!</h2>
 <%else if @user.artista_id != nil %>
@@ -18,24 +17,30 @@
   <div class="col-12 col-12-narrower">
     <%= @user.email%>
   </div>
-  <% if current_user != nil && current_user.id == @user.id %>
-    <div>
-      | <%= link_to "Acquisti", acquistos_path%>
-      | <%= link_to "Preferiti", favorites_path%> |
-    </div>
-    <div>
-      <%if @user.artista_id != nil %>
-        | <%= link_to 'Portfolio', artistum_path(@user.artista_id) %>
-        | <%= link_to "Aste", artistum_aste_path(@user.artista_id)%>
-      <%end %>
-      | <%= link_to "Offerte", user_offerte_path%> |
-    </div>
-    <div>
-      | <%= link_to "Metodi di pagamento", pagamentos_path%> |
-      <%= link_to 'Edit', edit_user_registration_path(@user) %> |
-      <%= link_to 'Esci', user_sign_out_path %> |
-    </div>
-  <%end %>
+  <% if current_user != nil
+       if current_user.id == @user.id %>
+      <div>
+        | <%= link_to "Acquisti", acquistos_path%>
+        | <%= link_to "Preferiti", favorites_path%> |
+      </div>
+      <div>
+        <%if @user.artista_id != nil %>
+          | <%= link_to 'Portfolio', artistum_path(@user.artista_id) %>
+          | <%= link_to "Aste", artistum_aste_path(@user.artista_id)%>
+        <%end %>
+        | <%= link_to "Offerte", user_offerte_path%> |
+      </div>
+      <div>
+        | <%= link_to "Metodi di pagamento", pagamentos_path%> |
+        <%= link_to 'Edit', edit_user_registration_path(@user) %> |
+        <%= link_to 'Esci', user_sign_out_path %> |
+      </div>
+    <%else %>
+      <div>
+        <%= link_to 'Portfolio', artistum_path(@user.artista_id) %>
+      </div>
+    <%end
+      end %>
 </div>
 
 

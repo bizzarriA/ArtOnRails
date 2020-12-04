@@ -11,28 +11,28 @@
   <% end %>
 
   <div class="col-12 col-12-mobilep ">
-    <%= form.label :numero %>
-    <%= form.text_field :numero %>
+    <%= form.label :numero%>
+    <%= form.text_field :numero, :required => true %>
   </div>
 
   <div class="col-12 col-12-mobilep ">
     <%= form.label :intestatario %>
-    <%= form.text_field :intestatario %>
+    <%= form.text_field :intestatario, :required => true %>
   </div>
 
   <div class="col-12 col-12-mobilep ">
     <%= form.label :mese, 'Mese Scadenza (mm)'%>
-    <%= form.number_field :mese %>
+    <%= form.number_field :mese, :required => true %>
   </div>
 
   <div class="col-12 col-12-mobilep ">
     <%= form.label :anno, 'Anno scadenza (aa)' %>
-    <%= form.number_field :anno %>
+    <%= form.number_field :anno, :required => true %>
   </div>
 
   <div class="col-12 col-12-mobilep ">
     <%= form.label :cvv %>
-    <%= form.number_field :cvv %>
+    <%= form.number_field :cvv, :required => true %>
   </div>
 
   <%= form.hidden_field :user_id, :value => current_user.id %>

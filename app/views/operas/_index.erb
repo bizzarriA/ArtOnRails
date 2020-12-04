@@ -4,11 +4,12 @@
     <%=link_to image_tag(opera.url.url), (opera.url.url),class: 'image' %>
     <h2><%= opera.titolo %></h2>
     <p> <%= opera.tecnica %>,<%= opera.anno %></p>
+    <div>
+    <%= link_to 'Show', opera_path(opera.id), class: "button"%>
     <%if current_user != nil%>
       <%if current_user.artista_id == opera.artista_id %>
         <%= link_to 'Modifica', edit_opera_path(opera.id), class: "button"%>
       <% else %>
-        <div>
           <%= link_to 'Acquista', new_acquistos_path(opera_id: opera.id), class: "button"%>
           <%unless favorites.empty? %>
             <% if favorites.include?(opera)%>
@@ -31,8 +32,6 @@
 
       <% end %>
 
-    <%else %>
-      <%= link_to 'Show', opera_path(opera.id), class: "button"%>
     <%end %>
   </article>
 

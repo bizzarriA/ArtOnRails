@@ -41,7 +41,7 @@ class OffertasController < ApplicationController
         format.html { redirect_to user_offerte_path, notice: 'Opera was successfully updated.' }
         format.json { render :show, status: :ok, location: @offerta }
       else
-        format.html { redirect_to edit_offertas_path(id: @offerta.id), notice: "Errore: Non puoi fare un'offerta più bassa di: " + String(importo_min)}
+        format.html { redirect_to edit_offertas_path(asta_id: @offerta.id), notice: "Errore: Non puoi fare un'offerta più bassa di: " + String(importo_min)}
         format.json { render json: @offerta.errors, status: :unprocessable_entity }
       end
     end
